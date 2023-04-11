@@ -1,0 +1,99 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
+import Card from './Card';
+
+function Home() {
+  const [cards, setCards] = useState([]);
+  const [visibleCards, setVisibleCards] = useState(10);
+
+ function handleLoadMore() {
+   setVisibleCards(prev => prev + 5);
+  }
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/profiles')
+      .then(response => setCards(response.data))
+      .catch(error => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    function handleScroll() {
+      if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
+        setVisibleCards(prev => prev + 5);
+      }
+    }
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [visibleCards]);
+
+
+  return (
+    <div className="container">
+      <div className="row">
+        {cards.slice(0, visibleCards).map(card => (
+          <div className="col-md-6 col-lg-4 mb-4" key={card.id}>
+            <Card data={card} />
+          </div>
+        ))}
+      </div>
+      {visibleCards < cards.length && (
+        <div className="text-center">
+          <button className="btn btn-primary" onClick={handleLoadMore}>
+            Load More
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+export default Home;
+
+
+//(HP-Home Page)Step 14 - Setting up server-side userprofile connection to be displayed in the frotend//
+
+import React, { useState, useEffect } from 'react';
+import './Home.css';
+import { Card, Button } from 'react-bootstrap';
+
+
+
+
+function Home() {
+  const [profiles, setProfiles] = useState([]);
+
+
+  useEffect(() => {
+    fetch('http://localhost:3001/profiles')
+      .then(response => response.json())
+      .then(data => setProfiles(data));
+  }, []);
+
+
+  return (
+
+    <div className="cardsHome">
+      {profiles.map(user => (
+        <Card key={user.id} style={{ width: '18rem' }}>
+       
+          <Card.Body>
+            <Card.Title>{user.firstname} {user.lastname}</Card.Title>
+            <Card.Text>{user.title}</Card.Text>
+            <Card.Title>{user.summary}</Card.Title>
+            <Card.Text>{user.email}</Card.Text>
+            <Button variant="primary" href={`/profile/${user.id}`}>
+              View Profile
+            </Button>
+          </Card.Body>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+
+
+
+
+export default Home;

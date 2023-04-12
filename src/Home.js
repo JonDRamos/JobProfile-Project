@@ -2,9 +2,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Button } from 'react-bootstrap';
 
+
+
 function Home() {
   const [cards, setCards] = useState([]);
-  const [visibleCards, setVisibleCards] = useState(12);
+  const [visibleCards, setVisibleCards] = useState(18);
 
  function handleLoadMore() {
    setVisibleCards(prev => prev + 6);
@@ -12,9 +14,13 @@ function Home() {
 
   useEffect(() => {
     axios.get('http://localhost:3001/profiles')
-      .then(response => setCards(response.data))
+      .then(response => {
+        const shuffledCards = response.data.sort(() => Math.random() - 0.5);
+        setCards(shuffledCards);
+      })
       .catch(error => console.error(error));
   }, []);
+
 
   useEffect(() => {
     function handleScroll() {

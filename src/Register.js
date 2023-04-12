@@ -46,27 +46,26 @@ function Register() {
 
         <label htmlFor="username">Username*</label>
         <input className="textInput" type="username" name="username" onChange={(e) => {setUsername(e.target.value)}} placeholder="Enter your Username" required />
+
         <label htmlFor="password">Password*</label>
-
         <input className="textInput" type="password" name="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your Password" required />
-
-        <input className="button" type="submit" onClick={register} value="Create an account" />
-        <h1 style={{fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{registerStatus}</h1>
-
-
 
         <label htmlFor="firstname">First Name*</label>
         <input className="textInput" type="text" name="firstname" onChange={(e) => {setFirstname(e.target.value)}} placeholder="First Name" required />
         <label htmlFor="lastname">Last Names*</label>
         <input className="textInput" type="text" name="lastname" onChange={(e) => {setLastname(e.target.value)}} placeholder="Last Name" required />
+        
         <label htmlFor="summary">Summary*</label>
         <input className="textInput" type="text" name="summary" onChange={(e) => {setSummary(e.target.value)}} placeholder="Tell us about yourself" required />
 
         <label htmlFor="city">City*</label>
-        <input className="textInput" type="text" name="city" onChange={(e) => {setCity(e.target.value)}} placeholder="Tell us about yourself" required />
-        <label htmlFor="title">Title*</label>
-        <input className="textInput" type="text" name="title" onChange={(e) => {setTitle(e.target.value)}} placeholder="Tell us about yourself" required />
+        <input className="textInput" type="text" name="city" onChange={(e) => {setCity(e.target.value)}} placeholder="City" required />
 
+        <label htmlFor="title">Title*</label>
+        <input className="textInput" type="text" name="title" onChange={(e) => {setTitle(e.target.value)}} placeholder="Title" required />
+
+        <input className="button" type="submit" onClick={register} value="Create an account" />
+        <h1 style={{fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{registerStatus}</h1>
 
       </form>
     </div>

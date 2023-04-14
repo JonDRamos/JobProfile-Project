@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import Axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 
 function Login(){
@@ -8,8 +7,6 @@ function Login(){
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loginStatus, setLoginStatus] = useState("");
-  const navigate = useNavigate();
-
 
 
   const login = (e) => {
@@ -23,7 +20,7 @@ function Login(){
       if(response.data.message){
         setLoginStatus(response.data.message);
       }else{
-        navigate("/Home");
+        setLoginStatus(response.data[0].email);
 
       }
     })

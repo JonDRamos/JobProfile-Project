@@ -16,7 +16,7 @@ function Register() {
 
     const register = (e) => {
       e.preventDefault();
-    Axios.post("http://localhost:3001/newuser", {
+    Axios.post("http://localhost:3009/registration", {
       email: email,
       username: username,
       password: password,

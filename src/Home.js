@@ -13,15 +13,15 @@ function Home() {
   }
 
   useEffect(() => {
-    axios.get('http://localhost:3001/profiles')
+    axios.get('http://localhost:3009/profiles')
       .then(response => {
         const shuffledCards = response.data.sort(() => Math.random() - 0.5);
+        
         setCards(shuffledCards);
       })
       .catch(error => console.error(error));
   }, []);
-
-
+ 
   useEffect(() => {
     function handleScroll() {
       if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {

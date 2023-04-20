@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Axios from "axios";
 
 
+
 function Login(){
   //Step 10. Creating the state variables //
   const [username, setUsername] = useState("");
@@ -9,39 +10,44 @@ function Login(){
   const [loginStatus, setLoginStatus] = useState("");
 
 
-  const login = (e) => {
-    e.preventDefault();
-    Axios.post("http://localhost:3001/login", {
-      username: username,
-      password: password,
 
 
-    }).then((response) => {
-      if(response.data.message){
-        setLoginStatus(response.data.message);
-      }else{
-        setLoginStatus(response.data[0].email);
 
-      }
-    })
-  }
-
+  const handleLogin = async (e) => {
+        e.preventDefault();
+        Axios.post('http://localhost:3009/login', { username, password })
+          .then(response => {
+            console.log(response.data);//this displays the user info as an object in the console log
+            setLoginStatus("LOGIN SUCCESSFUL");//will display this message if log in successful.
+          })
+          .catch(error => {
+            console.error(error);
+          });
+          
+        }
 
   //Step 11. Below is a copy/paste of a typical login/registration form. No need to reinvent the wheel!//
   return (
     <div className="loginForm">
-      <form>
+       <form onSubmit={handleLogin}>
         <h4>Login Here</h4>
 
 
-        <label htmlFor="username">Username*</label>
-        <input className="textInput" type="text" name="username" onChange={(e) => {setUsername(e.target.value)}} placeholder="Enter your Username" required />
+        <label>Username:
+        <input type={username}  value={username} onChange={(e) => setUsername(e.target.value)} required />
+        </label>
 
-        <label htmlFor="password">Password*</label>
-        <input className="textInput" type="password" name="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your Password" required />
+        <label>
+        Password:
+        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        </label>
 
-        <input className="button" type="submit" onClick={login} value="Login" />
-        <h1 style={{color: 'red', fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{loginStatus}</h1>
+        <br />
+
+        <button type="submit">Log in</button>
+    
+        <h1 style={{fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{loginStatus}</h1>
+  
       </form>
     </div>
 );

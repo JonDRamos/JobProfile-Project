@@ -1,56 +1,58 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+const { sessionStorage } = window;
 
-
-function Login(){
-  //Step 10. Creating the state variables //
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [loginStatus, setLoginStatus] = useState("");
+  const navigate = useNavigate();
 
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    Axios.post("http://localhost:3009/login", { username, password })
+      .then((response) => {
+        console.log(response.data);
+        const { token } = response.data;
+        sessionStorage.setItem("token", token);
 
+        // decode the token to get the userId
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const userId = decodedToken.userId;
+        sessionStorage.setItem("userId", userId);
 
+        sessionStorage.setItem("isLoggedIn", true);
+        navigate("/profile");
+      })
+      .catch((error) => console.error(error));
+  };
 
-  const handleLogin = async (e) => {
-        e.preventDefault();
-        Axios.post('http://localhost:3009/login', { username, password })
-          .then(response => {
-            console.log(response.data);//this displays the user info as an object in the console log
-            setLoginStatus("LOGIN SUCCESSFUL");//will display this message if log in successful.
-          })
-          .catch(error => {
-            console.error(error);
-          });
-          
-        }
-
-  //Step 11. Below is a copy/paste of a typical login/registration form. No need to reinvent the wheel!//
   return (
-    <div className="loginForm">
-       <form onSubmit={handleLogin}>
-        <h4>Login Here</h4>
-
-
-        <label>Username:
-        <input type={username}  value={username} onChange={(e) => setUsername(e.target.value)} required />
-        </label>
-
+    <div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit}>
         <label>
-        Password:
-        <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+          Username:
+          <input
+            type="text"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+          />
         </label>
-
-        <br />
-
-        <button type="submit">Log in</button>
-    
-        <h1 style={{fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{loginStatus}</h1>
-  
+        <label>
+          Password:
+          <input
+            type="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+        <button type="submit">Submit</button>
       </form>
     </div>
-);
+  );
 }
 
 export default Login;

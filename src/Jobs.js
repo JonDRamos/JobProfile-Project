@@ -1,6 +1,4 @@
 
-import './Jobs.css';
-
 
 function Jobs() {
 

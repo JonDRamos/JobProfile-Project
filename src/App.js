@@ -6,6 +6,7 @@ import Register from './Register';
 import Home from './Home';
 import Jobs from './Jobs';
 import Profile from './Profile';
+import { useState} from 'react';
 
 
 import './App.css';
@@ -13,7 +14,11 @@ import './App.css';
 
 
 function App() {
+
+
     return (
+
+               
         <Router>
             <div className="App">
                 <NavbarHead />
@@ -27,6 +32,8 @@ function App() {
 
 
                 </Routes>
+
+                
             </div>
         </Router>
     );

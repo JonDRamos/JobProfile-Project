@@ -37,7 +37,7 @@ function Home() {
     <div className="container">
       <div className="row">
         {cards.slice(0, visibleCards).map(card => (
-          <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4" key={card.iduserprofiles}>
+          <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-4" key={card.id}>
             <div className="card border" style={{ height: '300px' }}>
             <Card.Title>{card.firstname} {card.lastname}</Card.Title>
             <Card.Text>{card.title}</Card.Text>

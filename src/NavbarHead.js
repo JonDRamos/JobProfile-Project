@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import './Navbar.css';
+
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -11,7 +11,7 @@ function NavbarHead() {
         <Navbar bg="light" expand="lg" >
           <Container className="NavContainer">
             <div className="NavLogo">
-            <Navbar.Brand href="/Homebs">InTwelv</Navbar.Brand>
+            <Navbar.Brand href="/Home">InTwelv</Navbar.Brand>
             </div>        
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <div className="NavLinks">
@@ -21,6 +21,7 @@ function NavbarHead() {
                 <Nav.Link href="/Login">Login</Nav.Link>
                 <Nav.Link href="/Register">Register</Nav.Link>
                 <Nav.Link href="/Jobs">Jobs</Nav.Link>
+                <Nav.Link href="/Profile">Profile</Nav.Link>
   
               </Nav>
             </Navbar.Collapse>

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import Axios from "axios";
 
 
+
 function Register() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -12,6 +13,7 @@ function Register() {
     const [summary, setSummary] = useState("");
     const [lastname, setLastname] = useState("");
     const [firstname, setFirstname] = useState("");
+
 
 
     const register = (e) => {
@@ -29,7 +31,7 @@ function Register() {
       // setRegisterStatus(response);
       // console.log(response);
       if(response.data.message){
-        setRegisterStatus(response.data.message);
+        setRegisterStatus(response.data.message); 
       }else{
         setRegisterStatus("ACCOUNT CREATED SUCCESSFULLY");
       }
@@ -48,7 +50,8 @@ function Register() {
         <input className="textInput" type="username" name="username" onChange={(e) => {setUsername(e.target.value)}} placeholder="Enter your Username" required />
 
         <label htmlFor="password">Password*</label>
-        <input className="textInput" type="password" name="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your Password" required />
+        <input className="textInput" type="password" name="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your Password" required /> 
+      
 
         <label htmlFor="firstname">First Name*</label>
         <input className="textInput" type="text" name="firstname" onChange={(e) => {setFirstname(e.target.value)}} placeholder="First Name" required />

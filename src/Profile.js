@@ -1,86 +1,48 @@
-import React, {useState, useEffect} from "react";
-import Axios from "axios";
+  import React, { useState, useEffect } from "react";
+  import Axios from "axios";
+  import { useNavigate } from "react-router-dom";
 
-// / useEffect
+  const { sessionStorage } = window;
 
-function Profile() {
-  const [username, setUsername] = useState(null);
-  const [firstname, setFirstName] = useState("");
-  const [lastname, setLastName] = useState("");
-  const [city, setCity] = useState("");
-  const [title, setTitle] = useState("");
-  const [summary, setSumfmary] = useState("");
-  const [email, setEmail] = useState("");
-
-
+  function Profile() {
+    const [city, setCity] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
-      const fetchUser = async () => {
-        try {
-          const token = localStorage.getItem("token");
-          const response = await Axios.get("profileauth", {
-            headers: { Authorization: `Bearer ${token}` },
-          });
-          setUsername(response.data);
-          setFirstName(response.data.name);
+      const token = sessionStorage.getItem("token");
+      const userId = sessionStorage.getItem("userId");
+      Axios.get(`http://localhost:3009/profile/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((response) => {
+          console.log(response.data);
           setCity(response.data.city);
-          setTitle(response.data.title);
-          setUsername(response.data);
-          setLastName(response.data.name);
-          setCity(response.data.city);
-          setTitle(response.data.title);
-        } catch (error) {
-          console.error(error);
-
-          
-        }
-      };
-      fetchUser();
+          setFirstName(response.data.firstname);
+          setLastName(response.data.lastname);
+        })
+        .catch((error) => console.error(error));
     }, []);
-
-    const handleUpdate = async (e) => {
-      e.preventDefault();
-      try {
-        const token = localStorage.getItem("token");
-        const response = await Axios.put(
-          "/api/profile",
-          { username, city, title },
-          { headers: { Authorization: `Bearer ${token}` } }
-        );
-        setUsername(response.data);
-      } catch (error) {
-        console.error(error);
-      }
+    
+    const handleLogout = () => {
+      sessionStorage.removeItem("isLoggedIn");
+      sessionStorage.removeItem("token");
+      sessionStorage.removeItem("userId");
+      Axios.defaults.headers.common["Authorization"] = null;
+      navigate("/login");
+      
     };
-  
-    if (!username) return <div>Loading...</div>;
-  
+
     return (
       <div>
-        <h1>Welcome, {username}!</h1>
-  <form onSubmit={handleUpdate}>
-    <label>Name:</label>
-    <input
-      type="text"
-      value={username}
-      onChange={(e) => setUsername(e.target.value)}
-    />
-    <label>City:</label>
-    <input
-      type="text"
-      value={city}
-      onChange={(e) => setCity(e.target.value)}
-    />
-    <label>Title:</label>
-    <input
-      type="text"
-      value={title}
-      onChange={(e) => setTitle(e.target.value)}
-    />
-    <button type="submit">Update</button>
-  </form>
-</div>
-  )}
+        <h1>Welcome to your profile!</h1>
+        <p>City: {city}</p>
+        <p>First Name: {firstName}</p>
+        <p>Last Name: {lastName}</p>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
+    );
+  }
 
-
-export default Profile;
+  export default Profile;

@@ -1,5 +1,19 @@
 import React, {useState} from "react";
 import Axios from "axios";
+import { useNavigate } from "react-router-dom";
+import {
+  MDBBtn,
+  MDBContainer,
+  MDBCard,
+  MDBCardBody,
+  MDBCardImage,
+  MDBRow,
+  MDBCol,
+  MDBInput,
+  MDBRadio,
+  MDBSelect
+}
+from 'mdb-react-ui-kit';
 
 
 
@@ -7,74 +21,128 @@ function Register() {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [registerStatus, setRegisterStatus] = useState("");
     const [city, setCity] = useState("");
     const [title, setTitle] = useState("");
     const [summary, setSummary] = useState("");
     const [lastname, setLastname] = useState("");
     const [firstname, setFirstname] = useState("");
+    const [imageFile, setImageFile] = useState(null);
+    const navigate = useNavigate();
 
-
-
-    const register = (e) => {
+    const handleImageFileChange = (event) => {
+      setImageFile(event.target.files[0]);
+    };
+  
+    const handleRegister = async (e) => {
       e.preventDefault();
-    Axios.post("http://localhost:3009/registration", {
-      email: email,
-      username: username,
-      password: password,
-      city: city,
-      title: title,
-      summary: summary,
-      lastname: lastname,
-      firstname: firstname,      
-    }).then((response) => {
-      // setRegisterStatus(response);
-      // console.log(response);
-      if(response.data.message){
-        setRegisterStatus(response.data.message); 
-      }else{
-        setRegisterStatus("ACCOUNT CREATED SUCCESSFULLY");
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("username", username);
+      formData.append("password", password);
+      formData.append("city", city);
+      formData.append("title", title);
+      formData.append("summary", summary);
+      formData.append("lastname", lastname);
+      formData.append("firstname", firstname);
+      formData.append("imageFile", imageFile);
+  
+
+      try {
+        navigate("/home");
+        const response = await Axios.post(
+          "http://localhost:3009/registration",
+          formData,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        );
+        console.log(response.data);
+        if (response.data.message) {
+          console.log(response.data.message);
+        } else {
+          console.log("ACCOUNT CREATED SUCCESSFULLY");
+          
+        }
+      } catch (error) {
+        console.error(error);
       }
-    })
-  }
+    };
 
     return (
-      <div className="regForm">
-      <form>
-        <h4>Register Here</h4>
+      <form onSubmit={handleRegister}>
+        <MDBContainer fluid className='bg-dark'>
+    
+          <MDBRow className='d-flex justify-content-center align-items-center h-100'>
+            <MDBCol>
+    
+              <MDBCard className='my-4'>
+    
+                <MDBRow className='g-0'>
+    
+                  <MDBCol md='6' className="d-none d-md-block">
+                    <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp' alt="Sample photo" className="rounded-start" fluid/>
+                  </MDBCol>
+    
+                  <MDBCol md='6'>
+    
+                    <MDBCardBody className='text-black d-flex flex-column justify-content-center'>
+                      <h3 className="mb-5 text-uppercase fw-bold">Student registration form</h3>
+    
+                      <MDBRow>
+    
+                        <MDBCol md='6'>
+                          <MDBInput wrapperClass='mb-4' label='First Name' size='lg' id='form1' type='text'  onChange={(e) => setFirstname(e.target.value)}/>
+                        </MDBCol>
+    
+                        <MDBCol md='6'>
+                          <MDBInput wrapperClass='mb-4' label='Last Name' size='lg' id='form2' type='text' onChange={(e) => setLastname(e.target.value)} />
+                        </MDBCol>
+    
+                      </MDBRow>
+    
 
-        <label htmlFor="email">Email Address*</label>
-        <input className="textInput" type="text" name="email" onChange={(e) => {setEmail(e.target.value)}} placeholder="Enter your Email Address" required />
-
-        <label htmlFor="username">Username*</label>
-        <input className="textInput" type="username" name="username" onChange={(e) => {setUsername(e.target.value)}} placeholder="Enter your Username" required />
-
-        <label htmlFor="password">Password*</label>
-        <input className="textInput" type="password" name="password" onChange={(e) => {setPassword(e.target.value)}} placeholder="Enter your Password" required /> 
-      
-
-        <label htmlFor="firstname">First Name*</label>
-        <input className="textInput" type="text" name="firstname" onChange={(e) => {setFirstname(e.target.value)}} placeholder="First Name" required />
-        <label htmlFor="lastname">Last Names*</label>
-        <input className="textInput" type="text" name="lastname" onChange={(e) => {setLastname(e.target.value)}} placeholder="Last Name" required />
-        
-        <label htmlFor="summary">Summary*</label>
-        <input className="textInput" type="text" name="summary" onChange={(e) => {setSummary(e.target.value)}} placeholder="Tell us about yourself" required />
-
-        <label htmlFor="city">City*</label>
-        <input className="textInput" type="text" name="city" onChange={(e) => {setCity(e.target.value)}} placeholder="City" required />
-
-        <label htmlFor="title">Title*</label>
-        <input className="textInput" type="text" name="title" onChange={(e) => {setTitle(e.target.value)}} placeholder="Title" required />
-
-        <input className="button" type="submit" onClick={register} value="Create an account" />
-        <h1 style={{fontSize: '15px', textAlign: 'center', marginTop: '20px'}}>{registerStatus}</h1>
-
-      </form>
-    </div>
-
-);
-}
+    
+                      <div className='d-md-flex ustify-content-start align-items-center mb-4'>
+                        <h6 class="fw-bold mb-0 me-4">Gender: </h6>
+                        <MDBRadio name='inlineRadio' id='inlineRadio1' value='option1' label='Female' inline />
+                        <MDBRadio name='inlineRadio' id='inlineRadio2' value='option2' label='Male' inline />
+                        <MDBRadio name='inlineRadio' id='inlineRadio3' value='option3' label='Other' inline />
+                      </div>
+    
+                     
+    
+    
+                      <MDBInput wrapperClass='mb-4' label='Password' size='lg' id='form4' type='password' onChange={(e) => setPassword(e.target.value)} />
+                      <MDBInput wrapperClass='mb-4' label='Username' size='lg' id='form5' type='text' onChange={(e) => setUsername(e.target.value)} />
+                      <MDBInput wrapperClass='mb-4' label='Email Address' size='lg' id='form6' type='text' onChange={(e) => setEmail(e.target.value)} />
+                      <MDBInput wrapperClass='mb-4' label='City' size='lg' id='form7' type='text' onChange={(e) => setCity(e.target.value)} />
+                      <MDBInput wrapperClass='mb-4' label='Current Title' size='lg' id='form8' type='text' onChange={(e) => setTitle(e.target.value)} />
+                      <MDBInput wrapperClass='mb-4'  size='lg' id='form9' type="file" onChange={handleImageFileChange} />
+    
+    
+    
+    
+                      <div className="d-flex justify-content-end pt-3">
+                        <MDBBtn color='light' size='lg'>Reset all</MDBBtn>
+                        <MDBBtn className='ms-2' color='warning' size='lg' type="submit">Register</MDBBtn>
+                      </div>
+                     
+                    </MDBCardBody>
+    
+                  </MDBCol>
+                </MDBRow>
+    
+              </MDBCard>
+    
+            </MDBCol>
+          </MDBRow>
+    
+        </MDBContainer>
+        </form>
+      );
+  }
 
 export default Register;
     

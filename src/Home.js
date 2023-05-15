@@ -64,10 +64,10 @@ function Home() {
 
       <div className="row">
       {cards
-  .filter((card) =>
-            card.firstname.toLowerCase().includes(searchNameTerm.toLowerCase()) ||
-            card.lastname.toLowerCase().includes(searchNameTerm.toLowerCase()) ||
-            card.city.toLowerCase().includes(searchCityTerm.toLowerCase())
+   .filter((card) =>
+   (card.firstname.toLowerCase().includes(searchNameTerm.toLowerCase()) ||
+   card.lastname.toLowerCase().includes(searchNameTerm.toLowerCase())) &&
+   card.city.toLowerCase().includes(searchCityTerm.toLowerCase())
 
   )
   .slice(0, visibleCards)

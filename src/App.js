@@ -6,6 +6,8 @@ import Register from './Register';
 import Home from './Home';
 import Jobs from './Jobs';
 import Profile from './Profile';
+import EditProfile from './EditProfile';
+import UploadProjects from './UploadProjects';
 import { useState} from 'react';
 
 
@@ -29,6 +31,9 @@ function App() {
                     <Route path="Register" element={<Register/>} />
                     <Route path="Jobs" element={<Jobs/>} />
                     <Route path="Profile" element={<Profile/>} />
+                    <Route path="EditProfile" element={<EditProfile/>} />
+                    <Route path="UploadProjects" element={<UploadProjects/>} />
+
 
 
                 </Routes>

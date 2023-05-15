@@ -102,23 +102,13 @@ function Register() {
     
                       </MDBRow>
     
-
-    
-                      <div className='d-md-flex ustify-content-start align-items-center mb-4'>
-                        <h6 class="fw-bold mb-0 me-4">Gender: </h6>
-                        <MDBRadio name='inlineRadio' id='inlineRadio1' value='option1' label='Female' inline />
-                        <MDBRadio name='inlineRadio' id='inlineRadio2' value='option2' label='Male' inline />
-                        <MDBRadio name='inlineRadio' id='inlineRadio3' value='option3' label='Other' inline />
-                      </div>
-    
-                     
-    
-    
+   
                       <MDBInput wrapperClass='mb-4' label='Password' size='lg' id='form4' type='password' onChange={(e) => setPassword(e.target.value)} />
                       <MDBInput wrapperClass='mb-4' label='Username' size='lg' id='form5' type='text' onChange={(e) => setUsername(e.target.value)} />
                       <MDBInput wrapperClass='mb-4' label='Email Address' size='lg' id='form6' type='text' onChange={(e) => setEmail(e.target.value)} />
                       <MDBInput wrapperClass='mb-4' label='City' size='lg' id='form7' type='text' onChange={(e) => setCity(e.target.value)} />
                       <MDBInput wrapperClass='mb-4' label='Current Title' size='lg' id='form8' type='text' onChange={(e) => setTitle(e.target.value)} />
+                      
                       <MDBInput wrapperClass='mb-4'  size='lg' id='form9' type="file" onChange={handleImageFileChange} />
     
     

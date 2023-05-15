@@ -21,6 +21,11 @@ function Profile(props) {
   const [lastName, setLastName] = useState("");
   const [image, setImage] = useState("");
   const [summary, setSummary] = useState("");
+  const [project1, setproject1] = useState("");
+  const [project2, setproject2] = useState("");
+  const [project3, setproject3] = useState("");
+  const [project4, setproject4] = useState("");
+  const [project5, setproject5] = useState("");
   const navigate = useNavigate();
 
 
@@ -40,6 +45,12 @@ function Profile(props) {
         setLastName(response.data.lastname);
         setSummary(response.data.summary);
         setImage(response.data.imageFile);
+        setproject1(response.data.project1);
+        setproject2(response.data.project2);
+        setproject3(response.data.project3);
+        setproject4(response.data.project4);
+        setproject5(response.data.project5);
+
       })
     }, []); 
     // pass an empty array as the second argument to useEffect to run it only once on mount
@@ -119,30 +130,26 @@ function Profile(props) {
               </div>
               <MDBRow>
 
-
-
-                
                 <MDBCol className="mb-2">
-                  <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                    alt="image 1" className="w-100 rounded-3" />
+                <MDBCardImage src={`http://localhost:3009/${project1}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
                 </MDBCol>
 
+                <MDBCol className="mb-3">
+                <MDBCardImage src={`http://localhost:3009/${project2}`} alt="Project2" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
 
                 <MDBCol className="mb-2">
-                  <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                    alt="image 1" className="w-100 rounded-3" />
+                <MDBCardImage src={`http://localhost:3009/${project3}`} alt="Project3" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
                 </MDBCol>
+                <MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project4}`} alt="Project4" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
+                <MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
+
               </MDBRow>
-              <MDBRow className="g-2">
-                <MDBCol className="mb-2">
-                  <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                    alt="image 1" className="w-100 rounded-3" />
-                </MDBCol>
-                <MDBCol className="mb-2">
-                  <MDBCardImage src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                    alt="image 1" className="w-100 rounded-3" />
-                </MDBCol>
-              </MDBRow>
+
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

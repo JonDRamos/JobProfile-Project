@@ -1,42 +1,39 @@
 .container {
-    position: relative;
-  }
-  
-  .card {
-    position: relative;
-    z-index: 2;
-  }
-  
-  .hover-card-home {
-    position: absolute;
-    top: -10%;
-    left: -10%;
-    width: 120%;
-    height: 120%;
-    
-    padding: 2rem;
-    border-radius: 0.5rem;
-    z-index: 3;
-    transform: scale(1.1);
-    transition: transform 0.3s ease-in-out;
-    cursor: pointer;
-  }
-  
-  .hover-image {
-    opacity: .2;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 1;
-  }
-  
-  .card:hover + .hover-card,
-  .hover-card:hover {
-    display: block;
-  }
-  
+  position: relative;
+}
 
-  
-  .card:hover {
-    z-index: 1;
-    transform: scale(1.05);
-  }
-  
+.card {
+  position: relative;
+  z-index: 1;
+}
+
+.hover-card-home {
+  position:absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  z-index: 10;
+  transform: scale(1.1);
+  transition: transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.hover-image {
+  opacity: 0.1;
+  transition: opacity 0.5s ease-in-out;
+  z-index: 10;
+}
+
+.card:hover ~ .hover-card-home,
+.hover-card-home:hover {
+  display: block;
+  z-index: 10;
+}
+
+.card:hover {
+  z-index: 5;
+  transform: scale(1.05);
+}

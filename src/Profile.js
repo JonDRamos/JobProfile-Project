@@ -6,7 +6,8 @@
 //NEED LOGIN/REGISTER LINKS TO DISPPEAR WHE NLOGGED IN
 //project cards need to be smaller, with lickable links
 //project area needs to be empty with option to upload project thumbnail with clickable link
-//need seperate profile page for jsut viewing. the current one is for the logged in user
+//- nearly done! need seperate profile page for jsut viewing. the current one is for the logged in user 
+//related profiles at bottom of page in sperate card
 
 import React, { useState, useEffect } from "react";
 import Axios from "axios";

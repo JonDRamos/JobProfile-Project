@@ -1,3 +1,12 @@
+//Needs edit/add profile pic
+  //need to display profile pic
+//time to make edit options more elaborate
+ //social accounts, adding word/pdf docs/ resumes/ certs/ etc
+ 
+//turn on/off profile attributes such as - profile views, show/dont show contacts etc
+
+
+
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card } from 'react-bootstrap';
 import "./Home.css";
+import { Carousel } from 'react-bootstrap';
 
 
 
@@ -11,6 +12,7 @@ function Home() {
   const [hoveredCard, setHoveredCard] = useState(null);
   const [searchCityTerm, setSearchCityTerm] = useState("");
   const [searchNameTerm, setSearchNameTerm] = useState("");
+
   const [searchQuery, setSearchQuery] = useState('');
 
 
@@ -18,7 +20,6 @@ function Home() {
  function handleLoadMore() {
    setVisibleCards(prev => prev + 6);
   }
-
   useEffect(() => {
     axios.get('http://localhost:3009/profiles')
       .then(response => {
@@ -29,6 +30,13 @@ function Home() {
       })
       .catch(error => console.error(error));
   }, []);
+
+
+
+
+
+
+
  
   useEffect(() => {
     function handleScroll() {
@@ -39,6 +47,10 @@ function Home() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [visibleCards]);
+
+
+
+
 
 
   function handleSearch(event) {
@@ -83,13 +95,12 @@ function Home() {
 
     <div className={`card ${hoveredCard === index ? 'd-none' : ''}`}>
     <div className="card border" style={{ height: '350px', position: "relative" }}>
-            {card.imageFile && (
+            {card.project1 && (
               <div
-              className="d-flex align-items-center justify-content-center mx-auto mt-3"
+              className="d-flex align-items-center justify-content-center"
               style={{
-                height: '180px',
-                width: '180px',
-                borderRadius: '50%',
+                height: '90%',
+                width: '100%',                
                 overflow: 'hidden',
               }}
             >
@@ -128,13 +139,12 @@ function Home() {
                    <div className="card border" style={{ height: '350px' }}>
             {card.imageFile && (
               <div
-              className="d-flex align-items-center justify-content-center mx-auto mt-3"
+              className="d-flex align-items-center justify-content-center mx-auto"
               style={{
-                height: '180px',
-                width: '180px',
-                borderRadius: '50%',
+                height: '100%',
+                width: '100%',
                 overflow: 'hidden',
-                zIndex: 1,
+                zIndex: -2,
               }}
             >
                 <Card.Img 
@@ -146,21 +156,84 @@ function Home() {
                     objectFit: 'cover',
                     height: '100%',
                     width: '100%',
+                    pointerEvents: 'none',
                   }}
                 />
               </div>
             )}
-              <div
-              className="card-body text-center"
-              style={{
-                background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, .03))',
-              }}
-            >
+     <div
+        className="card-body text-center"
+        style={{
+          background: 'rgba(0, 0, 0, 0.8)',
+          position: 'absolute',
+          color: 'white',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+          padding: '20px',
+        }}
+      >
 
-            <Card.Title style={{ lineHeight: '1' }}>{card.firstname} {card.lastname}-links to profile page</Card.Title>
-            <Card.Text style={{ lineHeight: '1' }}>array of projects here upon hover</Card.Text>
-          
+<a href={`http://localhost:3009/Profile/:id`} target="_blank" rel="noopener noreferrer">
+
+            <Card.Title style={{ lineHeight: '2',marginBottom: '60px'  }}>{card.firstname} {card.lastname}</Card.Title>
             
+</a>
+          
+
+            <Carousel>
+            <Carousel.Item>
+            <a href={`${card.project1link}`} target="_blank" rel="noopener noreferrer">
+              <img
+                className="d-block w-100"
+                src={`http://localhost:3009/${card.project1}`}
+                alt="Project 1"
+              /> </a>
+            </Carousel.Item>
+
+            <Carousel.Item>
+            <a href={`${card.project2link}`} target="_blank" rel="noopener noreferrer">
+              <img
+                className="d-block w-100"
+                src={`http://localhost:3009/${card.project2}`}
+                alt="Project 2"
+              /> </a>
+            </Carousel.Item>
+
+            <Carousel.Item>
+            <a href={`${card.project3link}`} target="_blank" rel="noopener noreferrer">
+              <img
+                className="d-block w-100"
+                src={`http://localhost:3009/${card.project3}`}
+                alt="Project 3"
+              /> </a>
+            </Carousel.Item>
+
+            <Carousel.Item>
+            <a href={`${card.project4link}`} target="_blank" rel="noopener noreferrer">
+              <img
+                className="d-block w-100"
+                src={`http://localhost:3009/${card.project4}`}
+                alt="Project 4"
+              /> </a>
+            </Carousel.Item>
+
+            
+            <Carousel.Item>
+            <a href={`${card.project5link}`} target="_blank" rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }} 
+              >
+              <img
+                className="d-block w-100"
+                src={`http://localhost:3009/${card.project5}`}
+                alt="Project 5"
+              /> </a>
+            </Carousel.Item>
+          </Carousel>            
            </div>
             
 

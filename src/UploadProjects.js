@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 // import { useNavigate } from "react-router-dom";
-import { MDBContainer, MDBCard, MDBCardBody, MDBBtn, MDBInput,MDBTypography } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBCard, MDBCol, MDBCardImage, MDBCardBody, MDBBtn, MDBInput,MDBTypography } from 'mdb-react-ui-kit';
 
 const { sessionStorage } = window;
 
@@ -246,6 +246,27 @@ const handleImageFileChange5 = (event) => {
 };
 
 
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/profile/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+
+  })
+    .then((response) => {
+      console.log(response.data);
+      setproject1(response.data.project1);
+      setproject2(response.data.project2);
+      setproject3(response.data.project3);
+      setproject4(response.data.project4);
+      setproject5(response.data.project5);
+
+    })
+  }, []); 
+
+
 return (
   <MDBContainer>      
     <br />
@@ -294,8 +315,9 @@ return (
           required
         />
 
-        {/* Display the uploaded image */}
-        <img src={project1} alt="Project 1" />
+                <MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project1}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
 
         {/* Add an edit button next to the image */}
         <MDBBtn
@@ -369,8 +391,9 @@ return (
           required
         />
 
-        {/* Display the uploaded image */}
-        <img src={project2} alt="Project 2" />
+                <MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project2}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
 
         {/* Add an edit button next to the image */}
         <MDBBtn
@@ -445,8 +468,9 @@ return (
           required
         />
 
-        {/* Display the uploaded image */}
-        <img src={project3} alt="Project 3" />
+<MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project3}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
 
         {/* Add an edit button next to the image */}
         <MDBBtn
@@ -519,27 +543,43 @@ return (
                   required
                 />
 
-                <MDBInput
-                  wrapperClass="mb-4"
-                  size="md"
-                  id="form9"
-                  type="file"
-                  onChange={handleImageFileChange4}
-                />
-              </div>
+<MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project4}`} alt="Project4" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
 
-              <MDBBtn
-                type="submit"
-                form="upload4"
-                color="primary"
-                className="mr-2"
-                value="proj4"
-              >
-                Save
-              </MDBBtn>
-            </form>
-          </MDBCardBody>
-        </MDBCard>
+        {/* Add an edit button next to the image */}
+        <MDBBtn
+          color="primary"
+          className="mr-2"
+          onClick={() => {
+            // Trigger the file input field when the edit button is clicked
+            document.getElementById("fileInput4").click();
+          }}
+        >
+          Edit
+        </MDBBtn>
+
+        {/* Add a hidden file input field */}
+        <input
+          type="file"
+          id="fileInput4"
+          style={{ display: "none" }}
+          onChange={handleImageFileChange4}
+        />
+      </div>
+
+      <MDBBtn
+        type="submit"
+        form="upload4"
+        color="primary"
+        className="mr-2"
+        value="proj4"
+      >
+        Save
+      </MDBBtn>
+    </form>
+  </MDBCardBody>
+</MDBCard>
 
         <MDBCard>
           <MDBCardBody>
@@ -576,27 +616,43 @@ return (
                   required
                 />
 
-                <MDBInput
-                  wrapperClass="mb-4"
-                  size="md"
-                  id="form9"
-                  type="file"
-                  onChange={handleImageFileChange5}
-                />
-              </div>
+                <MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                </MDBCol>
 
-              <MDBBtn
-                type="submit"
-                form="upload5"
-                color="primary"
-                className="mr-2"
-                value="proj1"
-              >
-                Save
-              </MDBBtn>
-            </form>
-          </MDBCardBody>
-        </MDBCard>
+        {/* Add an edit button next to the image */}
+        <MDBBtn
+          color="primary"
+          className="mr-2"
+          onClick={() => {
+            // Trigger the file input field when the edit button is clicked
+            document.getElementById("fileInput5").click();
+          }}
+        >
+          Edit
+        </MDBBtn>
+
+        {/* Add a hidden file input field */}
+        <input
+          type="file"
+          id="fileInput5"
+          style={{ display: "none" }}
+          onChange={handleImageFileChange5}
+        />
+      </div>
+
+      <MDBBtn
+        type="submit"
+        form="upload5"
+        color="primary"
+        className="mr-2"
+        value="proj5"
+      >
+        Save
+      </MDBBtn>
+    </form>
+  </MDBCardBody>
+</MDBCard>
 
 
 

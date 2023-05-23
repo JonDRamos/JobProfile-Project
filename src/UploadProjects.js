@@ -34,7 +34,7 @@ function UploadProjects() {
     const [project5link, setproject5link] = useState("");
     const [project5, setproject5] = useState("");
   
-    
+ 
     // const navigate = useNavigate();
 
 useEffect(() => {
@@ -70,9 +70,12 @@ useEffect(() => {
       setproject5description(response.data.project5description);
       setproject5link(response.data.project5link);
       setproject5(response.data.project5);
+
     });
   }, []);
 
+
+ 
   const handleuploadproject1 = (e) => {
     e.preventDefault();
     const token = sessionStorage.getItem("token");
@@ -94,6 +97,7 @@ useEffect(() => {
       .catch((error) => {
         console.log(error);
       });  }
+
 
 
 
@@ -196,7 +200,7 @@ useEffect(() => {
   //   navigate("/profile");
   // };
 
-    
+
 
 
 const handleImageFileChange1 = (event) => {
@@ -262,7 +266,7 @@ useEffect(() => {
       setproject3(response.data.project3);
       setproject4(response.data.project4);
       setproject5(response.data.project5);
-
+  
     })
   }, []); 
 
@@ -279,6 +283,9 @@ return (
             
       <MDBCardBody className="justify-content-center mt-5" style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
        
+
+
+
        
       <MDBCard>
   <MDBCardBody>

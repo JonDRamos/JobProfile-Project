@@ -109,6 +109,7 @@ function Register() {
                       <MDBInput wrapperClass='mb-4' label='City' size='lg' id='form7' type='text' onChange={(e) => setCity(e.target.value)} />
                       <MDBInput wrapperClass='mb-4' label='Current Title' size='lg' id='form8' type='text' onChange={(e) => setTitle(e.target.value)} />
                       
+                      
                       <MDBInput wrapperClass='mb-4'  size='lg' id='form9' type="file" onChange={handleImageFileChange} />
     
     

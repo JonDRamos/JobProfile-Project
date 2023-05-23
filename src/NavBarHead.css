@@ -1,0 +1,14 @@
+.NavContainer {
+    height: 60px; /* Adjust the height as per your requirement */
+  }
+
+  .Navbar {
+    transition: top 0.3s;
+  }
+  
+  .Navbar.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }

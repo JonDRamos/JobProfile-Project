@@ -8,6 +8,7 @@ import Jobs from './Jobs';
 import Profile from './Profile';
 import EditProfile from './EditProfile';
 import UploadProjects from './UploadProjects';
+import EditVideo from './EditVideo';
 import { useState} from 'react';
 
 
@@ -33,6 +34,7 @@ function App() {
                     <Route path="Profile" element={<Profile/>} />
                     <Route path="EditProfile" element={<EditProfile/>} />
                     <Route path="UploadProjects" element={<UploadProjects/>} />
+                    <Route path="EditVideo" element={<EditVideo/>} />
 
 
 

@@ -17,6 +17,7 @@ function Home() {
 
 
 
+
  function handleLoadMore() {
    setVisibleCards(prev => prev + 6);
   }
@@ -25,7 +26,7 @@ function Home() {
       .then(response => {
         const shuffledCards = response.data.sort(() => Math.random() - 0.5);
         setCards(shuffledCards);
-
+        
         
       })
       .catch(error => console.error(error));
@@ -59,22 +60,54 @@ function Home() {
   
   return (
 
+<div className="homePage">
 
 
-    <div className="container">
+<div className="container-fluid p-0" style={{ overflowX: 'hidden', marginBottom: '-100px' }}>
+  <div className="searchcontainer" style={{ height: '350px', display: 'flex', flexDirection: 'column' }}>
+    <div className="row">
+      <div className="col-md-12 text-center" style={{ marginBottom: '40px', color: 'white' }}>
+        <h2>Meet your next programmer</h2>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col-md-6">
+        <div className="search-1">
+          <i className="bx bx-search-alt"></i>
+          <input
+            type="text"
+            placeholder="Search by name"
+            value={searchNameTerm}
+            onChange={(e) => setSearchNameTerm(e.target.value)}
+            style={{ width: "100%" }}
+          />
+        </div>
+      </div>
+      <div className="col-md-6">
+        <div className="search-2">
+          <i className="bx bxs-map"></i>
+          <input
+            type="text"
+            value={searchCityTerm}
+            onChange={(e) => setSearchCityTerm(e.target.value)}
+            style={{ width: "100%" }}
+            placeholder="Enter city name"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<input type="text" value={searchCityTerm} onChange={e => setSearchCityTerm(e.target.value)} placeholder="Enter city name" />
 
-<input
-  type="text"
-  placeholder="Search by name"
-  value={searchNameTerm}
-  onChange={(e) => setSearchNameTerm(e.target.value)}
-/>
+<br></br>
+<br></br>
 
 
-
+<div className="container-fluid p-5 " style={{ overflowX: 'hidden' }}>
       <div className="row">
+     
+     
       {cards
    .filter((card) =>
    (card.firstname.toLowerCase().includes(searchNameTerm.toLowerCase()) ||
@@ -84,7 +117,7 @@ function Home() {
   )
   .slice(0, visibleCards)
   .map((card, index) =>  (
-          <div className= "col-sm-4 col-md-6 col-lg-4 col-xl-3 mb-3" 
+          <div className= "col-sm-6 col-md-4 col-lg-3 my-2 card-no-radius"
           key={card.id}
           onMouseEnter={() => setHoveredCard(index)}
           onMouseLeave={() => setHoveredCard(null)}
@@ -93,132 +126,167 @@ function Home() {
 
 
 
-    <div className={`card ${hoveredCard === index ? 'd-none' : ''}`}>
-    <div className="card border" style={{ height: '350px', position: "relative" }}>
-            {card.project1 && (
-              <div
-              className="d-flex align-items-center justify-content-center"
-              style={{
-                height: '90%',
-                width: '100%',                
-                overflow: 'hidden',
-              }}
-            >
-                <Card.Img 
-                  variant="top" 
-                  src={`http://localhost:3009/${card.imageFile}`} 
-                  alt="Profile"
-                  style={{
-                    objectFit: 'cover',
-                    height: '100%',
-                    width: '100%',
-                  }}
-                />
-              </div>
-            )}
-              <div
-              className="card-body text-center"
-              style={{
-                background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, .05))',
-              }}
-            >
-            <Card.Title style={{ lineHeight: '1.5' }}>{card.firstname} {card.lastname}</Card.Title>
-            <Card.Text style={{ lineHeight: '1' }}>{card.city}</Card.Text>
-            <Card.Text style={{ lineHeight: '1' }}>{card.title}</Card.Text>
-            
-           </div>
-            
 
-            </div>
-    </div>
+<div className={`card ${hoveredCard === index ? 'd-none' : ''}`}>
+  <div
+    className="card border"
+    style={{
+      height: '220px',
+      position: 'relative',
+    }}
+  >
+    {card.project1 && (
+      <div
+        className="d-flex align-items-end justify-content-center"
+        style={{
+          height: '100%',
+          width: '100%',
+          overflow: 'hidden',
+        }}
+      >
+        <Card.Img
+          variant="top"
+          src={`http://localhost:3009/${card.imageFile}`}
+          alt="Profile"
+          style={{
+            objectFit: 'cover',
+            height: '100%',
+            width: '100%',
+          }}
+        />
+        <div
+          className="card-body text-center"
+          style={{
+            background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, .05))',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'end',
+            alignItems: 'center',
+            color: 'white',
+          }}
+        >
+          <Card.Title style={{ lineHeight: '1' }}>{card.firstname} {card.lastname},  {card.city}  </Card.Title>
+          {/* <Card.Text style={{ lineHeight: '.5' }}>{card.city}</Card.Text> */}
+          <Card.Text style={{ lineHeight: '.5' }}>{card.title}</Card.Text>
+        </div>
+      </div>
+    )}
+  </div>
+</div>
+
+
+
+
+
 
 
 
     {hoveredCard === index && (
       <div className="hover-card position-relative">
-                   <div className="card border" style={{ height: '350px' }}>
-            {card.imageFile && (
-              <div
-              className="d-flex align-items-center justify-content-center mx-auto"
+       <div className="card rounded-0" style={{ height: '460px', border: '2px solid lightgreyx' }}>
+        {card.imageFile && (
+          <div
+            className="d-flex align-items-center justify-content-center"
+            style={{
+              height: '100%',
+              width: '100%',
+              overflow: 'hidden',
+              zIndex: -2,              
+             }}
+          >
+            <Card.Img
+              className="hover-image"
+              variant="top"
+              src={`http://localhost:3009/${card.imageFile}`}
+              alt="Profile"
               style={{
+                objectFit: 'cover',
                 height: '100%',
                 width: '100%',
-                overflow: 'hidden',
-                zIndex: -2,
+                pointerEvents: 'none',
               }}
-            >
-                <Card.Img 
-                  className="hover-image"
-                  variant="top" 
-                  src={`http://localhost:3009/${card.imageFile}`} 
-                  alt="Profile"
-                  style={{
-                    objectFit: 'cover',
-                    height: '100%',
-                    width: '100%',
-                    pointerEvents: 'none',
-                  }}
-                />
-              </div>
-            )}
-     <div
-        className="card-body text-center"
-        style={{
-          background: 'rgba(0, 0, 0, 0.8)',
-          position: 'absolute',
-          color: 'white',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-          padding: '20px',
-        }}
-      >
+            />
+          </div>
+        )}
 
-<a href={`http://localhost:3009/Profile/:id`} target="_blank" rel="noopener noreferrer">
 
-            <Card.Title style={{ lineHeight: '2',marginBottom: '60px'  }}>{card.firstname} {card.lastname}</Card.Title>
+        <div
+          className="card-body text-center"
+          style={{
+            background: 'rgba(0, 0, 0, 0.8)',
+            position: 'absolute',
+            color: 'white',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            padding: '0px',
             
-</a>
-          
+          }}
+        >
 
-            <Carousel>
+
+      
+         
+  <div className="mt-4 mb-2" style={{ width: '100%', height: '100%'}}>
+    <video controls style={{left: '0px', top: '0px', width: '100%', position: 'absolute'  }}>
+      <source src={`http://localhost:3009/${card.videoFile}`} type="video/mp4" />
+    </video>
+  </div>
+               <Carousel style={{ marginBottom: '20px'  }}>
+
+               <Carousel.Item>
+           <div style={{marginBottom: '40px', marginTop: '27px', lineHeight: '2', background: 'none', height: 'auto', fontWeight: 'bold'  }}>{card.firstname} {card.lastname}<br></br>
+           {card.city}, Country {card.country}
+           <br></br>
+           {card.title} at Current Company {card.currentCompany}
+          </div>      
+            </Carousel.Item>
+
             <Carousel.Item>
             <a href={`${card.project1link}`} target="_blank" rel="noopener noreferrer">
               <img
-                className="d-block w-100"
+                 className="d-block mx-auto"
                 src={`http://localhost:3009/${card.project1}`}
                 alt="Project 1"
+                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
               /> </a>
             </Carousel.Item>
 
             <Carousel.Item>
             <a href={`${card.project2link}`} target="_blank" rel="noopener noreferrer">
               <img
-                className="d-block w-100"
+                 className="d-block mx-auto"
                 src={`http://localhost:3009/${card.project2}`}
                 alt="Project 2"
+                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
               /> </a>
             </Carousel.Item>
 
             <Carousel.Item>
             <a href={`${card.project3link}`} target="_blank" rel="noopener noreferrer">
               <img
-                className="d-block w-100"
+                 className="d-block mx-auto"
                 src={`http://localhost:3009/${card.project3}`}
                 alt="Project 3"
+                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
               /> </a>
             </Carousel.Item>
 
             <Carousel.Item>
             <a href={`${card.project4link}`} target="_blank" rel="noopener noreferrer">
               <img
-                className="d-block w-100"
+                 className="d-block mx-auto"
                 src={`http://localhost:3009/${card.project4}`}
                 alt="Project 4"
+                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
               /> </a>
             </Carousel.Item>
 
@@ -227,15 +295,20 @@ function Home() {
             <a href={`${card.project5link}`} target="_blank" rel="noopener noreferrer"
               style={{ textDecoration: 'none' }} 
               >
-              <img
-                className="d-block w-100"
-                src={`http://localhost:3009/${card.project5}`}
-                alt="Project 5"
-              /> </a>
+                  <img
+                    className="d-block mx-auto"
+                    src={`http://localhost:3009/${card.project5}`}
+                    alt="Project 5"
+                    style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
+                  /> </a>
+
             </Carousel.Item>
           </Carousel>            
            </div>
             
+           {/* <div style={{ flex: 1 }}>
+            <Card.Title style={{ lineHeight: '1.5', background: 'black' }}>{card.firstname} {card.lastname}</Card.Title>
+          </div>       */}
 
             </div>
 
@@ -256,6 +329,7 @@ function Home() {
           </button>
         </div>
       )}
+    </div>
     </div>
   );
 }

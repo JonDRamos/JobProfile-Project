@@ -13,6 +13,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
+import Nav from 'react-bootstrap/Nav';
 
 const { sessionStorage } = window;
 
@@ -68,96 +69,148 @@ function Profile(props) {
 
 
   return (
-    <div className="gradient-custom-2" style={{ backgroundColor: '#9de2ff' }}>
-    <MDBContainer className="py-5 h-100">
-      <MDBRow className="justify-content-center align-items-center h-100">
-        <MDBCol lg="" xl="12">
-          <MDBCard>
-            <div className="rounded-top text-white d-flex flex-row" style={{ backgroundColor: '#0009', height: '200px' }}>
-              <div className="ms-4 mt-5 d-flex flex-column" style={{ width: '150px' }}>
-                <MDBCardImage src={`http://localhost:3009/${image}`} alt="Profile" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
-                <MDBBtn outline color="dark" style={{height: '36px', overflow: 'visible'}}>
-                  Edit profile
-                </MDBBtn>
+
+  
+<div>
+<MDBContainer classname="banner" style={{height:'200px', maxHeight: '200px', width: '100%'}}>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+<br></br>
+  banner image here
+</MDBContainer>
+
+
+    <div className="gradient-custom-2 py-4" style={{ backgroundColor: 'white', display:'flex', justifyContent: 'space-between'}}>
+
+    <div className="porfoliioProjects">
+ <MDBContainer className="py-1 h-100" style={{}}>
+   <MDBCol className="mb-8" style={{ width: '600px', minHeight: '400px'}}>
+
+           <MDBRow>
+           <MDBCol className="mb-2" style={{ minWidth: '100%' }}>
+         <MDBCardImage src={`http://localhost:3009/${image}`} alt="Project1" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '600px', zIndex: '1' }} />
+             </MDBCol>
+
+             <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+             <MDBCardImage src={`http://localhost:3009/${project2}`} alt="Project2" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+
+             <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+               <MDBCardImage src={`http://localhost:3009/${project3}`} alt="Project3" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+     
+             
+           </MDBRow>
+           
+
+           </MDBCol>
+
+ </MDBContainer>
+ </div>
+
+
+
+
+ <div className="porfoliioProjects2"> 
+      <MDBContainer className="py-4 " style={{backgroundColor:'transparent' }}>
+   
+      <MDBCol className="mb-8" style={{ maxWidth: '500px', minHeight: '200px'}}>
+    
+              <MDBRow style={{ display: 'block' }}>
+
+              <div style={{ fontWeight:'bolder'}}>
+              {firstName} {lastName}
+              </div>  
+              <div>
+              {city}, State, Country
               </div>
-              <div className="ms-3" style={{ marginTop: '130px' }}>
-                <MDBTypography tag="h5"> {firstName} {lastName}</MDBTypography>
-                <MDBCardText>City: {city}</MDBCardText>
+              <br></br>
+              <div style={{ display: 'block', borderBottom: '1px solid lightgrey', maxWidth: '90%', marginLeft:'5%', marginRight:'5%'}}></div>
+              <br></br>
+              
+              <div>
+              Description
+              <br></br>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam posuere suscipit libero quis posuere. Suspendisse massa ligula, placerat et erat imperdiet, molestie feugiat magna. Quisque consequat vestibulum viverra. Nulla sagittis ultricies enim. Ut aliquam pretium sem, a pulvinar arcu efficitur sed.
+              <br></br> Maecenas eget neque sit amet mauris cursus feugiat. Mauris suscipit porta turpis, id porttitor quam facilisis vitae. Nam mattis leo neque, ac euismod diam gravida ut. 
+              <br></br>
+              Nam id aliquet augue. Donec malesuada facilisis lectus sed suscipit. Ut eu odio vestibulum, vulputate mi quis, mattis quam.
+              <br></br>
               </div>
-            </div>
-            <div className="p-4 text-black" style={{ backgroundColor: '#f8f9fa' }}>
-              <div className="d-flex justify-content-end text-center py-1">
-                <div>
-                  <MDBCardText className="mb-1 h5">253</MDBCardText>
-                  <MDBCardText className="small text-muted mb-0">Photos</MDBCardText>
-                </div>
-                <div className="px-3">
-                  <MDBCardText className="mb-1 h5">1026</MDBCardText>
-                  <MDBCardText className="small text-muted mb-0">Followers</MDBCardText>
-                </div>
-                <div>
-                  <MDBCardText className="mb-1 h5">478</MDBCardText>
-                  <MDBCardText className="small text-muted mb-0">Following</MDBCardText>
-                </div>
+
+              <br></br>
+              <div style={{ display: 'block', borderBottom: '1px solid lightgrey', maxWidth: '90%', marginLeft:'5%', marginRight:'5%'}}></div>
+              <br></br>
+              <div>
+              Skills & Languages
+              <br></br>
+              HMTL CSS JavaScript React REST API
               </div>
-            </div>
-
-
-            <MDBCardBody className="text-black p-4">
-            <div className="row">
-    <div className="col-md-9 mb-5">
-      <p className="lead fw-normal mb-1">About</p>
-      <div className="p-4" style={{ backgroundColor: '#0038' }}>
-        <MDBCardText className="font-italic mb-1"> Summary {summary}</MDBCardText>
-        <MDBCardText className="font-italic mb-1">Lives in New York</MDBCardText>
-        <MDBCardText className="font-italic mb-0">Photographer</MDBCardText>
-      </div>
-    </div>
-
-    <div className="col-md-3 d-flex flex-column">
-      <h6 className="fw-bold mb-3">Links</h6>
-      <ul className="list-unstyled mb-0">
-        <li><a href="https://example.com" target="_blank">Official Website</a></li>
-        <li><a href="https://linkedin.com" target="_blank">LinkedIn</a></li>
-        <li><a href="https://twitter.com" target="_blank">Twitter</a></li>
-      </ul>
-    </div>
-  </div>
-
-
-              <div className="d-flex justify-content-between align-items-center mb-4">
-                <MDBCardText className="lead fw-normal mb-0">Recent photos</MDBCardText>
-                <MDBCardText className="mb-0"><a href="#!" className="text-muted">Show all</a></MDBCardText>
+              <br></br>
+              <div style={{ display: 'block', borderBottom: '1px solid lightgrey', maxWidth: '90%', marginLeft:'5%', marginRight:'5%'}}></div>
+              <br></br>
+              <div>
+              Social Links
+              <br></br>
+              Linkedin twitter Instagram Facebook Website
               </div>
-              <MDBRow>
+              <br></br>
+              <div style={{ display: 'block', borderBottom: '1px solid lightgrey', maxWidth: '90%', marginLeft:'5%', marginRight:'5%'}}></div>
 
-                <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project1}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
-                </MDBCol>
 
-                <MDBCol className="mb-3">
-                <MDBCardImage src={`http://localhost:3009/${project2}`} alt="Project2" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
-                </MDBCol>
-
-                <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project3}`} alt="Project3" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
-                </MDBCol>
-                <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project4}`} alt="Project4" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
-                </MDBCol>
-                <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
-                </MDBCol>
-
+                
               </MDBRow>
+             
 
-            </MDBCardBody>
-          </MDBCard>
-        </MDBCol>
-      </MDBRow>
+              </MDBCol>
+
     </MDBContainer>
-    <button onClick={handleLogout}>Logout</button>
+    </div>
+
+
+    <div className="porfoliioProjects3">
+    <MDBContainer className="py-0 h-100" style={{backgroundColor:'transparent' }}>
+   
+   <MDBCol className="mb-1" style={{ width: '600px', minHeight: '500px'}}>
+
+           <MDBRow style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+
+           <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+         <MDBCardImage src={`http://localhost:3009/${project1}`} alt="Project1" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+
+             <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+             <MDBCardImage src={`http://localhost:3009/${project2}`} alt="Project2" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+
+             <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+               <MDBCardImage src={`http://localhost:3009/${project3}`} alt="Project3" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+             <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+             <MDBCardImage src={`http://localhost:3009/${project4}`} alt="Project4" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+             <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+             <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+             <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
+             <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-1 mb-1 img-thumbnail" fluid style={{ width: '300px', zIndex: '1' }} />
+             </MDBCol>
+             
+           </MDBRow>
+         
+
+           </MDBCol>
+
+ </MDBContainer>
+ </div>
+   
   </div>
+  <div className="asdasd">  <button onClick={handleLogout}>Logout</button>  </div>
+  <button><Nav.Link href="/EditProfile">Edit Profile</Nav.Link></button>
+</div>
+
 
   
 );

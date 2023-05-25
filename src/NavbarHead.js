@@ -24,7 +24,7 @@ function NavbarHead() {
                 <Nav.Link href="/Register">Register</Nav.Link>
                 <Nav.Link href="/Jobs">Jobs</Nav.Link>
                 <Nav.Link href="/Profile">Profile</Nav.Link>
-                <Nav.Link href="/EditProfile">Edit Profile</Nav.Link>
+                {/* <Nav.Link href="/EditProfile">Edit Profile</Nav.Link> */}
                 <Nav.Link href="/UploadProjects">Upload Projects</Nav.Link>
                 <Nav.Link href="/EditVideo">Profile ImageVideo</Nav.Link>
   

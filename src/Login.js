@@ -26,13 +26,14 @@ function Login() {
         sessionStorage.setItem("userId", userId);
         sessionStorage.setItem("isLoggedIn", true);
         navigate("/profile");
+        window.location.reload(); // Refresh the browser
       })
       .catch((error) => console.error(error));
   };
 
   return (
 
-<section className="vh-100" style={{ backgroundColor: '#9A616D' }}>
+<section className="vh-80" style={{ backgroundColor: 'white', height:'850px' }}>
   <div className="container py-5 h-100">
     <div className="row d-flex justify-content-center align-items-center h-100">
       <div className="col col-xl-10">
@@ -50,7 +51,7 @@ function Login() {
   
    <div className="d-flex align-items-center mb-3 pb-1">
   <i className="fas fa-cubes fa-2x me-3" style={{ color: '#ff6219' }}></i>
-  <span className="h1 fw-bold mb-0">Logo</span>
+  <span className="h1 fw-bold mb-0">Login</span>
 </div>
 <h5 className="fw-normal mb-3 pb-3" style={{ letterSpacing: '1px' }}>
                 Sign into your account

@@ -64,7 +64,7 @@ function Home() {
 
 
 <div className="container-fluid p-0" style={{ overflowX: 'hidden', marginBottom: '-100px' }}>
-  <div className="searchcontainer" style={{ height: '350px', display: 'flex', flexDirection: 'column' }}>
+  <div className="searchcontainer" style={{ height: '350px', display: 'flex', flexDirection: 'column', background: 'slategrey' }}>
     <div className="row">
       <div className="col-md-12 text-center" style={{ marginBottom: '40px', color: 'white' }}>
         <h2>Meet your next programmer</h2>
@@ -104,7 +104,7 @@ function Home() {
 <br></br>
 
 
-<div className="container-fluid p-5 " style={{ overflowX: 'hidden' }}>
+<div className="container-fluid p-5 " style={{ overflowX: 'hidden', background:'#f8f9fa' }}>
       <div className="row">
      
      
@@ -131,7 +131,7 @@ function Home() {
   <div
     className="card border"
     style={{
-      height: '220px',
+      height: '245px',
       position: 'relative',
     }}
   >
@@ -188,8 +188,8 @@ function Home() {
 
     {hoveredCard === index && (
       <div className="hover-card position-relative">
-       <div className="card rounded-0" style={{ height: '460px', border: '2px solid lightgreyx' }}>
-        {card.imageFile && (
+       <div className="card rounded-2" style={{ height: '245px', border: '2px solid lightgrey' }}>
+        {/* {card.imageFile && (
           <div
             className="d-flex align-items-center justify-content-center"
             style={{
@@ -212,7 +212,7 @@ function Home() {
               }}
             />
           </div>
-        )}
+        )} */}
 
 
         <div
@@ -235,12 +235,27 @@ function Home() {
 
       
          
-  <div className="mt-4 mb-2" style={{ width: '100%', height: '100%'}}>
-    <video controls style={{left: '0px', top: '0px', width: '100%', position: 'absolute'  }}>
-      <source src={`http://localhost:3009/${card.videoFile}`} type="video/mp4" />
-    </video>
-  </div>
-               <Carousel style={{ marginBottom: '20px'  }}>
+<div className="mt-4 mb-2" style={{ width: '100%', height: '100%' }}>
+  <video
+    id="videoElement"
+    src={`http://localhost:3009/${card.videoFile}`}
+    type="video/mp4"
+    style={{ left: '0px', top: '0px', width: '100%', height: '100%', position: 'absolute' }}
+    onMouseEnter={() => {
+      const videoElement = document.getElementById('videoElement');
+      if (videoElement) {
+        videoElement.play();
+      }
+    }}
+    onMouseLeave={() => {
+      const videoElement = document.getElementById('videoElement');
+      if (videoElement) {
+        videoElement.pause();
+      }
+    }}
+  ></video>
+</div>
+               {/* <Carousel style={{ marginBottom: '20px'  }}>
 
                <Carousel.Item>
            <div style={{marginBottom: '40px', marginTop: '27px', lineHeight: '2', background: 'none', height: 'auto', fontWeight: 'bold'  }}>{card.firstname} {card.lastname}<br></br>
@@ -303,7 +318,7 @@ function Home() {
                   /> </a>
 
             </Carousel.Item>
-          </Carousel>            
+          </Carousel>             */}
            </div>
             
            {/* <div style={{ flex: 1 }}>

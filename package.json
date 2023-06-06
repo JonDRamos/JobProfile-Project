@@ -15,7 +15,7 @@
     "create-react-app": "^5.0.1",
     "from": "^0.1.7",
     "jquery": "^3.6.4",
-    "mdb-react-ui-kit": "^6.0.0",
+    "mdb-react-ui-kit": "^6.1.0",
     "navigate": "^0.3.6",
     "npm": "^9.6.4",
     "react": "^18.2.0",

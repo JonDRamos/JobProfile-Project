@@ -22,7 +22,7 @@
   padding: 0rem;
   /* border-radius: 0.5rem; */
   z-index: 10;
-  transform: scale(1.1);
+  transform: scale(1);
   transition: transform 0.3s ease-in-out;
   cursor: pointer;
 }
@@ -41,16 +41,10 @@
 
 .card:hover {
   z-index: 5;
-  transform: scale(1.05);
+  transform: scale(1);
 }
 
   
-
-
-
-body {
-  background-image: linear-gradient(to right top,#3d3d3d,#a4bdfc);
-}
 
 .searchcontainer {
   background: rgba(223, 222, 222, 0.199);

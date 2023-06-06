@@ -72,45 +72,39 @@ function Register() {
 
     return (
       <form onSubmit={handleRegister}>
-        <MDBContainer fluid className='bg-dark'>
+        <MDBContainer fluid className='d-flex justify-content-center' style={{width:'853px', marginTop: '100px'}}>
     
-          <MDBRow className='d-flex justify-content-center align-items-center h-100'>
+          <MDBRow className=''>
             <MDBCol>
     
-              <MDBCard className='my-4'>
+              <MDBCard className=''>
     
-                <MDBRow className='g-0'>
+                <MDBRow className=''>
     
-                  <MDBCol md='6' className="d-none d-md-block">
-                    <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp' alt="Sample photo" className="rounded-start" fluid/>
+                  <MDBCol  className="" style={{height: '600px', display:
+                'flex',  alignItems:'center'}}>
+                    <MDBCardImage src='https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp' alt="Sample photo" className="rounded"  style={{maxHeight:'600px', position:'relative' }}/>
                   </MDBCol>
     
-                  <MDBCol md='6'>
+                  <MDBCol md='6'>    
+                    <MDBCardBody className='text-black d-flex flex-column justify-content-center' style={{height: '600px'}}>
+                      <h3 className="mb-5 text-uppercase fw-bold">Register</h3>
     
-                    <MDBCardBody className='text-black d-flex flex-column justify-content-center'>
-                      <h3 className="mb-5 text-uppercase fw-bold">Student registration form</h3>
-    
-                      <MDBRow>
-    
+                      <MDBRow>    
                         <MDBCol md='6'>
                           <MDBInput wrapperClass='mb-4' label='First Name' size='lg' id='form1' type='text'  onChange={(e) => setFirstname(e.target.value)}/>
                         </MDBCol>
     
                         <MDBCol md='6'>
                           <MDBInput wrapperClass='mb-4' label='Last Name' size='lg' id='form2' type='text' onChange={(e) => setLastname(e.target.value)} />
-                        </MDBCol>
-    
+                        </MDBCol>    
                       </MDBRow>
     
    
                       <MDBInput wrapperClass='mb-4' label='Password' size='lg' id='form4' type='password' onChange={(e) => setPassword(e.target.value)} />
                       <MDBInput wrapperClass='mb-4' label='Username' size='lg' id='form5' type='text' onChange={(e) => setUsername(e.target.value)} />
                       <MDBInput wrapperClass='mb-4' label='Email Address' size='lg' id='form6' type='text' onChange={(e) => setEmail(e.target.value)} />
-                      <MDBInput wrapperClass='mb-4' label='City' size='lg' id='form7' type='text' onChange={(e) => setCity(e.target.value)} />
-                      <MDBInput wrapperClass='mb-4' label='Current Title' size='lg' id='form8' type='text' onChange={(e) => setTitle(e.target.value)} />
-                      
-                      
-                      <MDBInput wrapperClass='mb-4'  size='lg' id='form9' type="file" onChange={handleImageFileChange} />
+
     
     
     

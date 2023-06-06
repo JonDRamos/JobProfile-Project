@@ -108,6 +108,109 @@ const handleImageFileChange = (event) => {
 
 
 
+///////////////////////  CERTS  //////////////////////////////////////////
+const [cert1, setCert1] = useState("");
+
+
+const uploadCert1 = async (e) => {
+  e.preventDefault();
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+  const formData = new FormData();
+
+  formData.append("cert1", cert1);
+
+  Axios.put(`http://localhost:3009/cert1/${userId}`, formData, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((response) => {
+      console.log(response.data);
+      // navigate("/profile");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/profile/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then((response) => {
+    console.log(response.data);
+    setCert1(response.data.cert1); // Update the cert1 state with the received value
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+
+const handleCert1FileChange = (e) => {
+  const file = e.target.files[0];
+  setCert1(file); // Update the cert1 state with the selected file
+};
+
+//////////////////////// CERT 2  ////////
+const [cert2, setCert2] = useState("");
+
+
+const uploadCert2 = async (e) => {
+  e.preventDefault();
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+  const formData = new FormData();
+
+  formData.append("cert2", cert2);
+
+  Axios.put(`http://localhost:3009/cert2/${userId}`, formData, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((response) => {
+      console.log(response.data);
+      // navigate("/profile");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/profile/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then((response) => {
+    console.log(response.data);
+    setCert2(response.data.cert2); // Update the cert1 state with the received value
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+
+const handleCert2FileChange = (e) => {
+  const file = e.target.files[0];
+  setCert2(file); // Update the cert1 state with the selected file
+};
+
+
+
+
+
+
+
+
+
+
+
+
 
         return (
 <MDBContainer style={{justifyContent: 'center',  display: 'flex' }}>   
@@ -163,8 +266,6 @@ const handleImageFileChange = (event) => {
 
 
 
-
-
 <MDBCard style={{ maxWidth: '600px' }}>
     <MDBCardBody>
     Profile Picture
@@ -207,6 +308,104 @@ const handleImageFileChange = (event) => {
       </form>
     </MDBCardBody>
   </MDBCard>
+
+
+
+
+
+  <MDBCard style={{ maxWidth: '600px' }}>
+    <MDBCardBody>
+    Certification 1
+      <form id="cert1" onSubmit={uploadCert1}>
+        <MDBCol className="mb-2">
+         
+          <MDBCardImage
+            src={`http://localhost:3009/${cert1}`}
+            className="mt-4 mb-2 img-thumbnail"
+            fluid
+            style={{ width: '475px', zIndex: '1' }}
+          />
+        </MDBCol>
+
+        <MDBBtn style={{ maxWidth: '200px', zIndex: '1' }}
+          color="primary"
+          className="mr-2"
+          onClick={() => {
+            document.getElementById("cert1input").click();
+          }}
+        >
+          Edit
+        </MDBBtn>
+
+        <input
+          type="file"
+          id="cert1input"
+          style={{ display: "none" }}
+          onChange={handleCert1FileChange}
+        />
+
+        <MDBBtn
+          type="submit"
+          form="cert1"
+          color="primary"
+          className="mr-2"
+        >
+          Save
+        </MDBBtn>
+      </form>
+    </MDBCardBody>
+  </MDBCard>
+
+
+
+
+
+  <MDBCard style={{ maxWidth: '600px' }}>
+    <MDBCardBody>
+    Certification 2
+      <form id="cert2" onSubmit={uploadCert2}>
+        <MDBCol className="mb-2">
+         
+          <MDBCardImage
+            src={`http://localhost:3009/${cert2}`}
+            className="mt-4 mb-2 img-thumbnail"
+            fluid
+            style={{ width: '475px', zIndex: '1' }}
+          />
+        </MDBCol>
+
+        <MDBBtn style={{ maxWidth: '200px', zIndex: '1' }}
+          color="primary"
+          className="mr-2"
+          onClick={() => {
+            document.getElementById("cert2input").click();
+          }}
+        >
+          Edit
+        </MDBBtn>
+
+        <input
+          type="file"
+          id="cert2input"
+          style={{ display: "none" }}
+          onChange={handleCert2FileChange}
+        />
+
+        <MDBBtn
+          type="submit"
+          form="cert2"
+          color="primary"
+          className="mr-2"
+        >
+          Save
+        </MDBBtn>
+      </form>
+    </MDBCardBody>
+  </MDBCard>
+
+
+
+
 
 
 

@@ -1,17 +1,21 @@
+
+
 .container {
   position: relative;
   width: 100vw;
+  
 }
 
 .card-no-radius {
   border-radius: 0;
+  
 }
 
 .card {
   position: relative;
   z-index: 1;
-  
 }
+
 
 .hover-card-home {
   position:absolute;

@@ -272,22 +272,24 @@ useEffect(() => {
 
 
 return (
-  <MDBContainer>      
+  <MDBContainer style={{ maxWidth: "1600px", margin: "0 auto", boxShadow:'none' }}>      
     <br />
     <br />
     <br />
-    <MDBCard style={{ maxWidth: "1500px", margin: "0 auto" }}>
-      <MDBTypography variant="h3" className="text-center mb-">
-        Upload Projects
+  <MDBCard style={{ border:'none'}}>
+  <MDBTypography variant="h3" className="text-center mb-5 mt-5" style={{borderBottom:'lightGrey solid 1px', padding:'10px'}}>
+        Portfolio Project Uploads 
+        <br></br>& Descriptions
       </MDBTypography>
             
-      <MDBCardBody className="justify-content-center mt-5" style={{ display: "flex", flexDirection: "row", gap: "1rem" }}>
+      <MDBCardBody className="justify-content-center mt-5" style={{ display: "flex", flexWrap: "wrap", gap: "4.5rem" }}> 
+
+
+
+
+
        
-
-
-
-       
-      <MDBCard>
+      <MDBCard style={{width:'420px'}}>
   <MDBCardBody>
     <form id="upload1" value="proj1" onSubmit={handleuploadproject1}>
       <div className="form-group">
@@ -302,15 +304,15 @@ return (
           required
         />
         <label htmlFor="project1description">Description:</label>
-        <input
-          label="title"
-          type="text"
-          className="form-control"
-          id="project1description"
-          value={project1description}
-          onChange={(e) => setproject1description(e.target.value)}
-          required
-        />
+        <textarea
+                    style={{ height: '100px', resize: 'none'}}
+                    type="text"
+                    className="form-control"
+                    id="upload"
+                    value={project1description}
+                    onChange={(e) => setproject1description(e.target.value)}
+                    required
+                  />
         <label htmlFor="project1link">Project Link:</label>
         <input
           label="title"
@@ -323,7 +325,7 @@ return (
         />
 
                 <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project1}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                <MDBCardImage src={`http://localhost:3009/${project1}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '400px', zIndex: '1' }} />
                 </MDBCol>
 
         {/* Add an edit button next to the image */}
@@ -363,7 +365,7 @@ return (
 
 
              
-      <MDBCard>
+      <MDBCard style={{width:'420px'}}>
   <MDBCardBody>
     <form id="upload2"  value="proj2" onSubmit={handleuploadproject2}>
       <div className="form-group">
@@ -378,15 +380,16 @@ return (
           required
         />
         <label htmlFor="project2description">Description:</label>
-        <input
-          label="title"
-          type="text"
-          className="form-control"
-          id="project2description"
-          value={project2description}
-          onChange={(e) => setproject2description(e.target.value)}
-          required
-        />
+        <textarea
+                    style={{ height: '100px', resize: 'none'}}
+                    type="text"
+                    className="form-control"
+                    id="upload"
+                    value={project2description}
+                    onChange={(e) => setproject2description(e.target.value)}
+                    required
+                  />
+
         <label htmlFor="project2link">Project Link:</label>
         <input
           label="title"
@@ -399,7 +402,7 @@ return (
         />
 
                 <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project2}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                <MDBCardImage src={`http://localhost:3009/${project2}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '400px', zIndex: '1' }} />
                 </MDBCol>
 
         {/* Add an edit button next to the image */}
@@ -440,7 +443,7 @@ return (
 
 
              
-<MDBCard>
+<MDBCard style={{width:'420px'}}>
   <MDBCardBody>
     <form id="upload3" value="proj3" onSubmit={handleuploadproject3}>
       <div className="form-group">
@@ -455,15 +458,15 @@ return (
           required
         />
         <label htmlFor="project3description">Description:</label>
-        <input
-          label="title"
-          type="text"
-          className="form-control"
-     
-          value={project3description}
-          onChange={(e) => setproject3description(e.target.value)}
-          required
-        />
+        <textarea
+                    style={{ height: '100px', resize: 'none'}}
+                    type="text"
+                    className="form-control"
+                    id="upload"
+                    value={project3description}
+                    onChange={(e) => setproject3description(e.target.value)}
+                    required
+                  />
         <label htmlFor="project3link">Project Link:</label>
         <input
           label="title"
@@ -476,7 +479,7 @@ return (
         />
 
 <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project3}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                <MDBCardImage src={`http://localhost:3009/${project3}`} alt="Project1" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '400px', zIndex: '1' }} />
                 </MDBCol>
 
         {/* Add an edit button next to the image */}
@@ -515,7 +518,7 @@ return (
 
 
 
-        <MDBCard>
+<MDBCard style={{width:'420px'}}>
           <MDBCardBody>
             <form id="upload4" onSubmit={handleuploadproject4}>
               <div className="form-group">
@@ -530,15 +533,17 @@ return (
                   required
                 />
                 <label htmlFor="project4description">Description:</label>
-                <input
-                  label="title"
-                  type="text"
-                  className="form-control"
-                  id="upload"
-                  defaultValue={project4description}
-                  onChange={(e) => setproject4description(e.target.value)}
-                  required
-                />
+                  <textarea
+                    style={{ height: '100px', resize: 'none'}}
+                    type="text"
+                    className="form-control"
+                    id="upload"
+                    value={project4description}
+                    onChange={(e) => setproject4description(e.target.value)}
+                    required
+                  />
+
+         
                 <label htmlFor="project4link">Project Link:</label>
                 <input
                   label="title"
@@ -551,7 +556,7 @@ return (
                 />
 
 <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project4}`} alt="Project4" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                <MDBCardImage src={`http://localhost:3009/${project4}`} alt="Project4" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '400px', zIndex: '1' }} />
                 </MDBCol>
 
         {/* Add an edit button next to the image */}
@@ -588,7 +593,7 @@ return (
   </MDBCardBody>
 </MDBCard>
 
-        <MDBCard>
+<MDBCard style={{width:'420px'}}>
           <MDBCardBody>
             <form id="upload5" onSubmit={handleuploadproject5}>
               <div className="form-group">
@@ -603,15 +608,15 @@ return (
                   required
                 />
                 <label htmlFor="project5description">Description:</label>
-                <input
-                  label="title"
-                  type="text"
-                  className="form-control"
-                  id="upload"
-                  defaultValue={project5description}
-                  onChange={(e) => setproject5description(e.target.value)}
-                  required
-                />
+                <textarea
+                    style={{ height: '100px', resize: 'none'}}
+                    type="text"
+                    className="form-control"
+                    id="upload"
+                    value={project5description}
+                    onChange={(e) => setproject5description(e.target.value)}
+                    required
+                  />
                 <label htmlFor="project5link">Project Link:</label>
                 <input
                   label="title"
@@ -624,7 +629,7 @@ return (
                 />
 
                 <MDBCol className="mb-2">
-                <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '150px', zIndex: '1' }} />
+                <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '400px', zIndex: '1' }} />
                 </MDBCol>
 
         {/* Add an edit button next to the image */}
@@ -661,6 +666,81 @@ return (
   </MDBCardBody>
 </MDBCard>
 
+
+
+
+ <MDBCard style={{width:'420px'}}>
+          <MDBCardBody>
+            <form id="upload5" onSubmit={handleuploadproject5}>
+              <div className="form-group">
+                <label htmlFor="project5name">Project Title:</label>
+                <input
+                  label="title"
+                  type="text"
+                  className="form-control"
+                  id="upload"
+                  defaultValue={project5name}
+                  onChange={(e) => setproject5name(e.target.value)}
+                  required
+                />
+                <label htmlFor="project5description">Description:</label>
+                <textarea
+                    style={{ height: '100px', resize: 'none'}}
+                    type="text"
+                    className="form-control"
+                    id="upload"
+                    value={project5description}
+                    onChange={(e) => setproject5description(e.target.value)}
+                    required
+                  />
+                <label htmlFor="project5link">Project Link:</label>
+                <input
+                  label="title"
+                  type="text"
+                  className="form-control"
+                  id="upload"
+                  defaultValue={project5link}
+                  onChange={(e) => setproject5link(e.target.value)}
+                  required
+                />
+
+                <MDBCol className="mb-2">
+                <MDBCardImage src={`http://localhost:3009/${project5}`} alt="Project5" className="mt-4 mb-2 img-thumbnail" fluid style={{ width: '400px', zIndex: '1' }} />
+                </MDBCol>
+
+        {/* Add an edit button next to the image */}
+        <MDBBtn
+          color="primary"
+          className="mr-2"
+          onClick={() => {
+            // Trigger the file input field when the edit button is clicked
+            document.getElementById("fileInput5").click();
+          }}
+        >
+          Edit
+        </MDBBtn>
+
+        {/* Add a hidden file input field */}
+        <input
+          type="file"
+          id="fileInput5"
+          style={{ display: "none" }}
+          onChange={handleImageFileChange5}
+        />
+      </div>
+
+      <MDBBtn
+        type="submit"
+        form="upload5"
+        color="primary"
+        className="mr-2"
+        value="proj5"
+      >
+        Save
+      </MDBBtn>
+    </form>
+  </MDBCardBody>
+</MDBCard>
 
 
       </MDBCardBody>

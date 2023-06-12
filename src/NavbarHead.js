@@ -41,16 +41,32 @@ function NavbarHead() {
 
     return (
 
-<Navbar bg="light" expand="lg" className="sticky-top">
-  <Container className="NavContainer">
+
+
+<Navbar bg="white" expand="lg" className="sticky-top">
+
+  <Container fluid className="NavContainer" style={{height:'100px', display: 'flex', justifyContent: 'space-around'}}>
+
+ 
+<div style={{color:"white"}}>
+  tezsdkdsdkmzdzddfsddssasd
+</div>
+ 
+
+ 
     <div className="NavLogo">
-      <Navbar.Brand href="/Home">inTwelv</Navbar.Brand>
-    </div>        
+    <Navbar.Brand href="/Home" style={{ fontSize: '45px', fontFamily: 'TimesNewRoman', fontWeight: 'bold'}}>
+        NerdiWorx
+      </Navbar.Brand>
+    </div> 
+
+
+
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <div className="NavLinks">
+    <div className="NavLinks"   style={{ display:'flex', alignSelf: 'right'}}>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="me-auto">
-          <Nav.Link href="/Home">Home</Nav.Link>
+          <Nav.Link href="/Home" style={{fontSize:'22px', fontWeight:'bold'}}>Home</Nav.Link>
 
           {!isLoggedIn && ( //when logged out, the login and registration links will become available/displayed
                 <>
@@ -58,15 +74,15 @@ function NavbarHead() {
                   <Nav.Link href="/Register">Register</Nav.Link>
                 </>
                       )}
-          <Nav.Link href="/Jobs">Jobs</Nav.Link>
+          <Nav.Link href="/Jobs"  style={{fontSize:'22px', fontWeight:'bold'}}>Jobs</Nav.Link>
     
           {isLoggedIn && (  //when logged in, a icon with drop down menues for profile, edit and logout appear.
                 <NavDropdown
                   title={
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
+                      width="30"
+                      height="30"
                       fill="currentColor"
                       className="bi-person"
                       viewBox="0 0 16 16"
@@ -84,9 +100,13 @@ function NavbarHead() {
               )}
             </Nav>
           </Navbar.Collapse>
-        </div>
+          </div>
+       
+        
       </Container>
     </Navbar>
+
+  
   );
 }
 

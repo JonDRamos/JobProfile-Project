@@ -213,16 +213,76 @@ const handleCert2FileChange = (e) => {
 
 
         return (
-<MDBContainer style={{justifyContent: 'center',  display: 'flex' }}>   
+<MDBContainer style={{maxWidth: "1600px"}}>   
 
-<MDBCard style={{ maxWidth: '600px'}}>
+
+<MDBTypography variant="h3" className="text-center mb-5 mt-5" style={{borderBottom:'lightGrey solid 1px', padding:'10px'}}>
+        Profile Photo & Video & Certifications
+      </MDBTypography>
+
+
+
+  <div style={{display:'flex', justifyContent:'center', borderBottom:'lightGrey solid 1px', gapBottom:'20px'}}>
+    
+  <div>
+<MDBCard style={{ maxWidth: '600px', boxShadow:'none', border:'transparent'}}>
+    <MDBCardBody style={{boxShadow:'none'}}>
+    <MDBTypography variant="h5" className="text-center mb-0">
+    Profile Picture
+      </MDBTypography>
+      <form id="image1" onSubmit={changeProfilePic}>
+        <MDBCol className="mb-2">
+         
+          <MDBCardImage
+            src={`http://localhost:3009/${imageFile}`}
+            className="mt-4 mb-2"
+            fluid
+            style={{ width: '600px', zIndex: '1' }}
+          />
+        </MDBCol>
+
+        <MDBBtn
+          color="primary"
+          className="mr-2"
+          onClick={() => {
+            document.getElementById("imageInput").click();
+          }}
+        >
+          Edit
+        </MDBBtn>
+
+        <input
+          type="file"
+          id="imageInput"
+          style={{ display: "none" }}
+          onChange={handleImageFileChange}
+        />
+
+        <MDBBtn
+          type="submit"
+          form="image1"
+          color="primary"
+          className="mr-2"
+        >
+          Save
+        </MDBBtn>
+      </form>
+    </MDBCardBody>
+  </MDBCard>
+</div>
+
+
+<div>
+  <MDBCard style={{ maxWidth: '600px', boxShadow:'none', border:'transparent'}}>
   <MDBCardBody style={{ maxWidth: '600px'}}>
     <form id="video1" onSubmit={videoFileUpload}>
       <div className="form-group">
-       Profile Video
+      <MDBTypography variant="h5" className="text-center mb-0">
+    Profile Video
+      </MDBTypography>
       {videoFile && (
       <div className="mt-4 mb-2" style={{ width: '100%' }}>
-        <video controls style={{ width: '100%' }}>
+        <video controls style={{ width: '600px' }}>
           <source src={`http://localhost:3009/${videoFile}`} type="video/mp4" />
         </video>
       </div>
@@ -264,58 +324,30 @@ const handleCert2FileChange = (e) => {
   </MDBCardBody>
 </MDBCard>
 
+</div>
 
+</div>
 
-<MDBCard style={{ maxWidth: '600px' }}>
-    <MDBCardBody>
-    Profile Picture
-      <form id="image1" onSubmit={changeProfilePic}>
-        <MDBCol className="mb-2">
-         
-          <MDBCardImage
-            src={`http://localhost:3009/${imageFile}`}
-            className="mt-4 mb-2 img-thumbnail"
-            fluid
-            style={{ width: '475px', zIndex: '1' }}
-          />
-        </MDBCol>
+<div style={{display:'flex', justifyContent:'center', marginTop:'50px'}}>
 
-        <MDBBtn
-          color="primary"
-          className="mr-2"
-          onClick={() => {
-            document.getElementById("imageInput").click();
-          }}
-        >
-          Edit
-        </MDBBtn>
-
-        <input
-          type="file"
-          id="imageInput"
-          style={{ display: "none" }}
-          onChange={handleImageFileChange}
-        />
-
-        <MDBBtn
-          type="submit"
-          form="image1"
-          color="primary"
-          className="mr-2"
-        >
-          Save
-        </MDBBtn>
-      </form>
-    </MDBCardBody>
-  </MDBCard>
-
-
-
-
-
-  <MDBCard style={{ maxWidth: '600px' }}>
-    <MDBCardBody>
+  <MDBCard style={{ maxWidth: '600px', maxHeight: '700px', boxShadow:'none', border:'transparent'}}>
+    <MDBCardBody>    
+      <MDBTypography variant="h5" className="text-center mb-0">
     Certification 1
+      </MDBTypography>
+    
+
+    <div className="form-group" style={{display:'flex', flexDirection:'column'}}>
+        <label htmlFor="">Project Title:</label>
+        <input
+        />
+        <label htmlFor="">Description:</label>
+        <input
+        />
+        <label htmlFor="">Project Link:</label>
+        <input
+        /></div>
+
       <form id="cert1" onSubmit={uploadCert1}>
         <MDBCol className="mb-2">
          
@@ -323,9 +355,13 @@ const handleCert2FileChange = (e) => {
             src={`http://localhost:3009/${cert1}`}
             className="mt-4 mb-2 img-thumbnail"
             fluid
-            style={{ width: '475px', zIndex: '1' }}
+            style={{ width: '600px', zIndex: '1' }}
           />
         </MDBCol>
+
+
+
+
 
         <MDBBtn style={{ maxWidth: '200px', zIndex: '1' }}
           color="primary"
@@ -360,9 +396,21 @@ const handleCert2FileChange = (e) => {
 
 
 
-  <MDBCard style={{ maxWidth: '600px' }}>
-    <MDBCardBody>
+  <MDBCard style={{ maxWidth: '600px', maxHeight: '700px', boxShadow:'none', border:'transparent'}}>
+  <MDBCardBody>    
+    <MDBTypography variant="h5" className="text-center mb-0">
     Certification 2
+      </MDBTypography>
+    <div className="form-group" style={{display:'flex', flexDirection:'column'}}>
+        <label htmlFor="">Project Title:</label>
+        <input
+        />
+        <label htmlFor="">Description:</label>
+        <input
+        />
+        <label htmlFor="">Project Link:</label>
+        <input
+        /></div>
       <form id="cert2" onSubmit={uploadCert2}>
         <MDBCol className="mb-2">
          
@@ -370,7 +418,7 @@ const handleCert2FileChange = (e) => {
             src={`http://localhost:3009/${cert2}`}
             className="mt-4 mb-2 img-thumbnail"
             fluid
-            style={{ width: '475px', zIndex: '1' }}
+            style={{ width: '600px', zIndex: '1' }}
           />
         </MDBCol>
 
@@ -399,11 +447,13 @@ const handleCert2FileChange = (e) => {
         >
           Save
         </MDBBtn>
+    
       </form>
+    
     </MDBCardBody>
   </MDBCard>
 
-
+  </div>
 
 
 

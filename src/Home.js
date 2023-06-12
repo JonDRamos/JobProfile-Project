@@ -64,13 +64,15 @@ function Home() {
 
 
 <div className="container-fluid p-0" style={{ overflowX: 'hidden', marginBottom: '-100px' }}>
-  <div className="searchcontainer" style={{ height: '350px', display: 'flex', flexDirection: 'column', background: 'slategrey' }}>
+  <div className="searchcontainer" style={{ height: '900px', display: 'flex', flexDirection: 'column', background: 'white' }}>
     <div className="row">
-      <div className="col-md-12 text-center" style={{ marginBottom: '40px', color: 'white' }}>
-        <h2>Meet your next programmer</h2>
+      <div className="col-md-12 text-center" style={{ fontWeight:'', lineHeight:'130px', letterSpacing:'0px', fontSize:'145px',marginBottom: '40px', color: 'black' }}>
+        MORE THAN
+        <br>
+        </br> A CV
       </div>
     </div>
-    <div className="row">
+    {/* <div className="row">
       <div className="col-md-6">
         <div className="search-1">
           <i className="bx bx-search-alt"></i>
@@ -95,7 +97,7 @@ function Home() {
           />
         </div>
       </div>
-    </div>
+    </div> */}
   </div>
 </div>
 
@@ -104,7 +106,7 @@ function Home() {
 <br></br>
 
 
-<div className="container-fluid p-5 " style={{ overflowX: 'hidden', background:'#f8f9fa' }}>
+<div className="container-fluid p-5 " style={{ overflowX: 'hidden', background:'white' }}>
       <div className="row">
      
      
@@ -155,7 +157,7 @@ function Home() {
           }}
         />
         <div
-          className="card-body text-center"
+          className="card-body text-left"
           style={{
             background: 'linear-gradient(to bottom, transparent, rgba(0, 0, 0, .05))',
             position: 'absolute',
@@ -165,14 +167,20 @@ function Home() {
             bottom: 0,
             display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'end',
-            alignItems: 'center',
+            justifyContent: 'flex-end',
+            alignItems: 'flex-start',
             color: 'white',
+            margin:'0px',
+            padding: '0px'
           }}
         >
-          <Card.Title style={{ lineHeight: '1' }}>{card.firstname} {card.lastname},  {card.city}  </Card.Title>
+          
+          <div style={{ background:  'rgba(68, 70, 84, 0.4)', width: 'auto', height: 'auto', padding:'5px', borderRadius:'2px' }}>
+          <Card.Title style={{ lineHeight: '1', fontSize:'17px' }}>{card.firstname} {card.lastname}, current title {card.title}    </Card.Title>
           {/* <Card.Text style={{ lineHeight: '.5' }}>{card.city}</Card.Text> */}
-          <Card.Text style={{ lineHeight: '.5' }}>{card.title}</Card.Text>
+          <Card.Title style={{ lineHeight: '1', fontSize:'14px' }}>{card.city}, Country {card.country} </Card.Title>
+          {/* <Card.Text style={{ lineHeight: '1' }}>{card.title} @ "Current Company"</Card.Text> */}
+          </div>
         </div>
       </div>
     )}

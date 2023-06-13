@@ -9,8 +9,10 @@
 
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import Select from 'react-select';
 import { useNavigate } from "react-router-dom";
-import { MDBContainer, MDBRow, MDBCol, MDBCard,  MDBCardBody, MDBBtn, MDBTypography } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBRow, MDBCol, MDBCard,  MDBCardBody, MDBBtn, MDBTypography
+ } from 'mdb-react-ui-kit';
 
 const { sessionStorage } = window;
 
@@ -31,21 +33,14 @@ function EditProfile(props) {
   const [bootcampname, setBootCampName] = useState("");
   const [bootcampprogram, setBootCampProgram] = useState("");
   const [bootcampyear, setBootCampYear] = useState("");
-  // const [skilllang1, setSkilllang1] = useState("");
-  // const [skilllang2, setSkilllang2] = useState("");
-  // const [skilllang3, setSkilllang3] = useState("");
-  // const [skilllang4, setSkilllang4] = useState("");
-  // const [skilllang5, setSkilllang5] = useState("");
-  // const [skilllang6, setSkilllang6] = useState("");
-  // const [skilllang7, setSkilllang7] = useState("");
-  // const [skilllang8, setSkilllang8] = useState("");
-  // const [skilllang9, setSkilllang9] = useState("");
+
   const [selectedValues, setSelectedValues] = useState({ skills: [] });
-
-
- 
+  const [databaseValues, setDatabaseValues] = useState(null); // Added state variable
+  
   const navigate = useNavigate();
   
+
+  {/* //////////////////////////////////////////     Axios.GET- All User Data ////////////////////////////////////////// */}  
   useEffect(() => {
     const token = sessionStorage.getItem("token");
     const userId = sessionStorage.getItem("userId");
@@ -71,92 +66,88 @@ function EditProfile(props) {
       setBootCampName(response.data.bootcampname);
       setBootCampProgram(response.data.bootcampprogram);
       setBootCampYear(response.data.bootcampyear);
-      // setSkilllang1(response.data.skilllang1);
-      // setSkilllang2(response.data.skilllang2);
-      // setSkilllang3(response.data.skilllang3);
-      // setSkilllang4(response.data.skilllang4);
-      // setSkilllang5(response.data.skilllang5);
-      // setSkilllang6(response.data.skilllang6);
-      // setSkilllang7(response.data.skilllang7);
-      // setSkilllang8(response.data.skilllang8);
-      // setSkilllang9(response.data.skilllang9);
-      
+
+      setDatabaseValues(response.data); // Update database values state
+
          });
   }, []);
 
 
-  // useEffect(() => {
-  //   const token = sessionStorage.getItem("token");
-  //   const userId = sessionStorage.getItem("userId");
-  //   // ... code for fetching user profile data ...
+
+
+{/* //////////////////////////////////////////     Axios.PUT - All User Data ////////////////////////////////////////// */}  
+const handleEditProfile = (e) => {
+  e.preventDefault();
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+
+  const formData = new FormData();
+  formData.append("firstname", firstName);
+  formData.append("lastname", lastName);
+  formData.append("city", city);
+  formData.append("summary", summary);
+
+  formData.append("country", country);
+  formData.append("stateprovince", stateprovince);
+  formData.append("educationschool", educationschool);
+  formData.append("educationprogram", educationprogram);
+  formData.append("educationyear", educationyear);
+  formData.append("twitter", twitter);
+  formData.append("facebook", facebook);
+  formData.append("instagram", instagram);
+  formData.append("website", website);
+  formData.append("bootcampname", bootcampname);
+  formData.append("bootcampprogram", bootcampprogram);
+  formData.append("bootcampyear", bootcampyear);
+
+  selectedValues.skills.forEach((skill, index) => {
+    formData.append(`skilllang${index + 1}`, skill);
+  });
   
-  //   // Fetch the skills data and update the selectedValues
-  //   Axios.get(`http://localhost:3009/skills/${userId}`, {
-  //     headers: { Authorization: `Bearer ${token}` },
-  //   })
-  //     .then((response) => {
-  //       const skillsData = response.data;
-  //       setSelectedValues((prevSelectedValues) => ({
-  //         ...prevSelectedValues,
-  //         skills: skillsData,
-  //       }));
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  Axios.put(`http://localhost:3009/profile/${userId}`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      console.log(response.data);
+      navigate("/profile");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
 
 
 
-  const handleEditProfile = (e) => {
-    e.preventDefault();
+
+{/* //////////////////////////////////////////     Axios - Skills & Languages    ////////////////////////////////////////// */}  
+  useEffect(() => {
     const token = sessionStorage.getItem("token");
     const userId = sessionStorage.getItem("userId");
 
-
-    const formData = new FormData();
-    formData.append("firstname", firstName);
-    formData.append("lastname", lastName);
-    formData.append("city", city);
-    formData.append("summary", summary);
-
-    formData.append("country", country);
-    formData.append("stateprovince", stateprovince);
-    formData.append("educationschool", educationschool);
-    formData.append("educationprogram", educationprogram);
-    formData.append("educationyear", educationyear);
-    formData.append("twitter", twitter);
-    formData.append("facebook", facebook);
-    formData.append("instagram", instagram);
-    formData.append("website", website);
-    formData.append("bootcampname", bootcampname);
-    formData.append("bootcampprogram", bootcampprogram);
-    formData.append("bootcampyear", bootcampyear);
-    // formData.append("skilllang1", skilllang1);
-    // formData.append("skilllang2", skilllang2);
-    // formData.append("skilllang3", skilllang3);
-    // formData.append("skilllang4", skilllang4);
-    // formData.append("skilllang5", skilllang5);
-    // formData.append("skilllang6", skilllang6);
-    // formData.append("skilllang7", skilllang7);
-    // formData.append("skilllang8", skilllang8);
-    // formData.append("skilllang9", skilllang9);
-    selectedValues.skills.forEach((skill) => {
-      formData.append("skills[]", skill);
-    });
-
-    
-    Axios.put(`http://localhost:3009/profile/${userId}`, formData, {
+    // Fetch the skills data and update the selectedValues
+    Axios.get(`http://localhost:3009/skills/${userId}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        console.log(response.data);
-        // navigate("/profile");
+        const skillsData = response.data;
+        setSelectedValues((prevSelectedValues) => ({
+          ...prevSelectedValues,
+          skills: skillsData,
+        }));
       })
       .catch((error) => {
-        console.log("error - value always exists");
+        console.log(error);
       });
-  };
+  }, []);
+{/* //////////////////////////////////////////     Axios - Social Media  ////////////////////////////////////////// */}  
+
+
+
+
 
 
 
@@ -169,14 +160,15 @@ function EditProfile(props) {
   };
 
 
-  const handleSelection = (value) => {
-    if (value && !selectedValues.skills.includes(value)) {
-      setSelectedValues({
-        ...selectedValues,
-        skills: [...selectedValues.skills, value]
-      });
-    }
-  };
+  // const handleSelection = (value) => {
+  //   setSelectedValues((prevValues) => ({
+  //     ...prevValues,
+  //     skills: [value], // Clear previous values and set the newly selected value
+  //   }));
+  // };
+
+
+
 
   return (
     <>
@@ -185,6 +177,7 @@ function EditProfile(props) {
         <MDBCol md="">
           <MDBCard style={{border:'none'}}>
             <MDBCardBody>
+
             <MDBTypography variant="h3" className="text-center mb-5 mt-5" style={{borderBottom:'lightGrey solid 1px', padding:'10px'}}>
         Edit Profile Basics
       </MDBTypography>
@@ -197,6 +190,9 @@ function EditProfile(props) {
 
 <div style={{width:'650px', margin:'10px'}}>
 <MDBCard  style={{margin:'5px', border:'none'}}>
+
+
+{/* //////////////////////////////////////////Left Section  -  Basic Info + Current Employment////////////////////////////////////////// */}
 
 <h5 style={{fontWeight:'bold'}}>Basic Info</h5>
 
@@ -290,9 +286,10 @@ function EditProfile(props) {
 
 </div>
 
+
+{/* //////////////////////////////////////////Education Section////////////////////////////////////////// */}
+
 <div style={{width:'650px', margin:'10px'}}>
-
-
 <MDBCard  style={{margin:'5px', border:'none'}}>
 <h5 style={{fontWeight:'bold'}}>Education</h5>
                   <label htmlFor="educationschool">School/Institution</label>
@@ -324,6 +321,9 @@ function EditProfile(props) {
                   />
                   
                   </MDBCard>
+
+
+{/* //////////////////////////////////////////Bootcamp Section////////////////////////////////////////// */}
 
 <h5 style={{fontWeight:'bold', marginTop:'20px'}}>BootCamp</h5>
 
@@ -373,6 +373,7 @@ function EditProfile(props) {
                   /> 
 </MDBCard> */}
 
+{/* //////////////////////////////////////////Social Media Section////////////////////////////////////////// */}
 
 <h5 style={{fontWeight:'bold', marginTop:'20px'}}>Website & Social Media</h5>
 
@@ -415,24 +416,40 @@ function EditProfile(props) {
                   /> 
 </MDBCard>
 
+{/* //////////////////////////////////////////Skills Section////////////////////////////////////////// */}
 <div>
                   <h2>Skills</h2>
-                  <select onChange={(e) => handleSelection(e.target.value)}>
-                    <option value="">Select a skill</option>
-                    <option value="CSS">CSS</option>
-                    <option value="HTML">HTML</option>
-                    <option value="JavaScript">JavaScript</option>
-                  </select>
+                  <Select
+                    isMulti
+                    options={[
+                      { value: "CSS", label: "CSS" },
+                      { value: "HTML", label: "HTML" },
+                      { value: "JavaScript", label: "JavaScript" },
+                    ]}
+                    onChange={(selectedOptions) => {
+                      const selectedSkills = selectedOptions
+                        ? selectedOptions.map((option) => option.value)
+                        : [];
+                      setSelectedValues((prevValues) => ({
+                        ...prevValues,
+                        skills: selectedSkills,
+                      }));
+                    }}
+                    value={selectedValues.skills.map((skill) => ({
+                      value: skill,
+                      label: skill,
+                    }))}
+                  />
 
-                  <div>
-                    <h3>Selected Skills</h3>
-                    <ul>
-                      {selectedValues.skills.map((value, index) => (
-                        <li key={index}>{value}</li>
-                      ))}
-                    </ul>
-                  </div>
+
+
                 </div>
+
+
+
+
+
+
 
 
 </div>

@@ -51,12 +51,13 @@ function NavbarHead() {
 <div style={{color:"white"}}>
   tezsdkdsdkmzdzddfsddssasd
 </div>
+{/* the code above is currently use to take up space in the 1/3 column of the container. Will need to properly address this */}
  
 
  
     <div className="NavLogo">
     <Navbar.Brand href="/Home" style={{ fontSize: '45px', fontFamily: 'TimesNewRoman', fontWeight: 'bold'}}>
-        NerdiWorx
+    Coder Portfolios
       </Navbar.Brand>
     </div> 
 

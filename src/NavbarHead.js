@@ -57,7 +57,7 @@ function NavbarHead() {
  
     <div className="NavLogo">
     <Navbar.Brand href="/Home" style={{ fontSize: '45px', fontFamily: 'TimesNewRoman', fontWeight: 'bold'}}>
-    Coder Portfolios
+   console.log(jobs)[.com]
       </Navbar.Brand>
     </div> 
 

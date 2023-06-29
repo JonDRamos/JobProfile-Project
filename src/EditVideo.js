@@ -108,8 +108,11 @@ const handleImageFileChange = (event) => {
 
 
 
-///////////////////////  CERTS  //////////////////////////////////////////
+///////////////////////  DEGREE / CERTIFICACTION 1 IMAGE UPLOAD  //////////////////////////////////////////
 const [cert1, setCert1] = useState("");
+const [degree1, setDegree1] = useState("");
+const [link1, setLink1] = useState("");
+
 
 
 const uploadCert1 = async (e) => {
@@ -119,6 +122,9 @@ const uploadCert1 = async (e) => {
   const formData = new FormData();
 
   formData.append("cert1", cert1);
+  formData.append("degree1", degree1); // Add degree1 value to the formData
+  formData.append("link1", link1); // Add link1 value to the formData
+
 
   Axios.put(`http://localhost:3009/cert1/${userId}`, formData, {
     headers: { Authorization: `Bearer ${token}` },
@@ -132,16 +138,19 @@ const uploadCert1 = async (e) => {
     });
 };
 
+
 useEffect(() => {
   const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
 
-  Axios.get(`http://localhost:3009/profile/${userId}`, {
+  Axios.get(`http://localhost:3009/cert1/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   })
   .then((response) => {
     console.log(response.data);
     setCert1(response.data.cert1); // Update the cert1 state with the received value
+    setDegree1(response.data.certification1);
+    setLink1(response.data.certification1link);
   })
   .catch((error) => {
     console.log(error);
@@ -154,8 +163,22 @@ const handleCert1FileChange = (e) => {
   setCert1(file); // Update the cert1 state with the selected file
 };
 
-//////////////////////// CERT 2  ////////
+
+const handleDegree1Change = (e) => {
+  setDegree1(e.target.value);
+};
+
+const handleLink1Change = (e) => {
+  setLink1(e.target.value);
+};
+
+
+
+///////////////////////  DEGREE / CERTIFICACTION 2 IMAGE UPLOAD  //////////////////////////////////////////
 const [cert2, setCert2] = useState("");
+const [degree2, setDegree2] = useState("");
+const [link2, setLink2] = useState("");
+
 
 
 const uploadCert2 = async (e) => {
@@ -165,6 +188,9 @@ const uploadCert2 = async (e) => {
   const formData = new FormData();
 
   formData.append("cert2", cert2);
+  formData.append("degree2", degree2); // Add degree1 value to the formData
+  formData.append("link2", link2); // Add link1 value to the formData
+
 
   Axios.put(`http://localhost:3009/cert2/${userId}`, formData, {
     headers: { Authorization: `Bearer ${token}` },
@@ -182,12 +208,14 @@ useEffect(() => {
   const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
 
-  Axios.get(`http://localhost:3009/profile/${userId}`, {
+  Axios.get(`http://localhost:3009/cert2/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   })
   .then((response) => {
     console.log(response.data);
     setCert2(response.data.cert2); // Update the cert1 state with the received value
+    setDegree2(response.data.certification2);
+    setLink2(response.data.certification2link);
   })
   .catch((error) => {
     console.log(error);
@@ -200,6 +228,14 @@ const handleCert2FileChange = (e) => {
   setCert2(file); // Update the cert1 state with the selected file
 };
 
+
+const handleDegree2Change = (e) => {
+  setDegree2(e.target.value);
+};
+
+const handleLink2Change = (e) => {
+  setLink2(e.target.value);
+};
 
 
 
@@ -328,130 +364,139 @@ const handleCert2FileChange = (e) => {
 
 </div>
 
-<div style={{display:'flex', justifyContent:'center', marginTop:'50px'}}>
 
-  <MDBCard style={{ maxWidth: '600px', maxHeight: '700px', boxShadow:'none', border:'transparent'}}>
-    <MDBCardBody>    
+{/* //////////////////////// CERTIFICATION 1 ////////////////////////// */}
+
+<div style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>
+  <MDBCard style={{ maxWidth: '600px', height: '700px', boxShadow: 'none', border: 'transparent' }}>
+    <MDBCardBody>
       <MDBTypography variant="h5" className="text-center mb-0">
-    Certification 1
+        Certification 1
       </MDBTypography>
-    
 
-    <div className="form-group" style={{display:'flex', flexDirection:'column'}}>
-        <label htmlFor="">Project Title:</label>
-        <input
-        />
-        <label htmlFor="">Description:</label>
-        <input
-        />
-        <label htmlFor="">Project Link:</label>
-        <input
-        /></div>
+      
+      <div className="form-group" style={{ display: 'flex', flexDirection: 'column' }}>
+  <label htmlFor="degree1">Certification/Degree:</label>
+  <input
+    type="text"
+    name="degree1"
+    value={degree1}
+    onChange={handleDegree1Change}
+  />
+  <label htmlFor="link1">Link:</label>
+  <input
+    type="text"
+    name="link1"
+    value={link1}
+    onChange={handleLink1Change}
+  />
+</div>
 
-      <form id="cert1" onSubmit={uploadCert1}>
-        <MDBCol className="mb-2">
-         
-          <MDBCardImage
-            src={`http://localhost:3009/${cert1}`}
-            className="mt-4 mb-2 img-thumbnail"
-            fluid
-            style={{ width: '600px', zIndex: '1' }}
-          />
-        </MDBCol>
+<form id="cert1" onSubmit={uploadCert1}>
+  <MDBCol className="mb-2">
+    <MDBCardImage
+      src={`http://localhost:3009/${cert1}`}
+      className="mt-4 mb-2 img-thumbnail"
+      fluid
+      style={{ width: '600px', height: '400px', zIndex: '1' }}
+    />
+  </MDBCol>
+
+  <MDBBtn
+    style={{ maxWidth: '200px', zIndex: '1' }}
+    color="primary"
+    className="mr-2"
+    onClick={() => {
+      document.getElementById('cert1input').click();
+    }}
+  >
+    Edit
+  </MDBBtn>
+
+  <input
+    type="file"
+    id="cert1input"
+    style={{ display: 'none' }}
+    onChange={handleCert1FileChange}
+  />
+
+  <MDBBtn type="submit" color="primary" className="mr-2">
+    Save
+  </MDBBtn>
+</form>
 
 
 
-
-
-        <MDBBtn style={{ maxWidth: '200px', zIndex: '1' }}
-          color="primary"
-          className="mr-2"
-          onClick={() => {
-            document.getElementById("cert1input").click();
-          }}
-        >
-          Edit
-        </MDBBtn>
-
-        <input
-          type="file"
-          id="cert1input"
-          style={{ display: "none" }}
-          onChange={handleCert1FileChange}
-        />
-
-        <MDBBtn
-          type="submit"
-          form="cert1"
-          color="primary"
-          className="mr-2"
-        >
-          Save
-        </MDBBtn>
-      </form>
     </MDBCardBody>
   </MDBCard>
 
 
 
+  {/* //////////////////////// CERTIFICATION 2 ////////////////////////// */}
 
 
-  <MDBCard style={{ maxWidth: '600px', maxHeight: '700px', boxShadow:'none', border:'transparent'}}>
-  <MDBCardBody>    
-    <MDBTypography variant="h5" className="text-center mb-0">
-    Certification 2
+  <MDBCard style={{ maxWidth: '600px', height: '700px', boxShadow: 'none', border: 'transparent' }}>
+    <MDBCardBody>
+      <MDBTypography variant="h5" className="text-center mb-0">
+        Certification 2
       </MDBTypography>
-    <div className="form-group" style={{display:'flex', flexDirection:'column'}}>
-        <label htmlFor="">Project Title:</label>
-        <input
-        />
-        <label htmlFor="">Description:</label>
-        <input
-        />
-        <label htmlFor="">Project Link:</label>
-        <input
-        /></div>
-      <form id="cert2" onSubmit={uploadCert2}>
-        <MDBCol className="mb-2">
-         
-          <MDBCardImage
-            src={`http://localhost:3009/${cert2}`}
-            className="mt-4 mb-2 img-thumbnail"
-            fluid
-            style={{ width: '600px', zIndex: '1' }}
-          />
-        </MDBCol>
 
-        <MDBBtn style={{ maxWidth: '200px', zIndex: '1' }}
-          color="primary"
-          className="mr-2"
-          onClick={() => {
-            document.getElementById("cert2input").click();
-          }}
-        >
-          Edit
-        </MDBBtn>
+      
+      <div className="form-group" style={{ display: 'flex', flexDirection: 'column' }}>
+  <label htmlFor="degree2">Certification/Degree:</label>
+  <input
+    type="text"
+    name="degree2"
+    value={degree2}
+    onChange={handleDegree2Change}
+  />
+  <label htmlFor="link2">Link:</label>
+  <input
+    type="text"
+    name="link2"
+    value={link2}
+    onChange={handleLink2Change}
+  />
+</div>
 
-        <input
-          type="file"
-          id="cert2input"
-          style={{ display: "none" }}
-          onChange={handleCert2FileChange}
-        />
+<form id="cert2" onSubmit={uploadCert2}>
+  <MDBCol className="mb-2">
+    <MDBCardImage
+      src={`http://localhost:3009/${cert2}`}
+      className="mt-4 mb-2 img-thumbnail"
+      fluid
+      style={{ width: '600px', height: '400px', zIndex: '1' }}
+    />
+  </MDBCol>
 
-        <MDBBtn
-          type="submit"
-          form="cert2"
-          color="primary"
-          className="mr-2"
-        >
-          Save
-        </MDBBtn>
-    
-      </form>
-    
+  <MDBBtn
+    style={{ maxWidth: '200px', zIndex: '1' }}
+    color="primary"
+    className="mr-2"
+    onClick={() => {
+      document.getElementById('cert2input').click();
+    }}
+  >
+    Edit
+  </MDBBtn>
+
+  <input
+    type="file"
+    id="cert2input"
+    style={{ display: 'none' }}
+    onChange={handleCert2FileChange}
+  />
+
+  <MDBBtn type="submit" color="primary" className="mr-2">
+    Save
+  </MDBBtn>
+</form>
+
+
+
     </MDBCardBody>
   </MDBCard>
+
 
   </div>
 
@@ -460,10 +505,16 @@ const handleCert2FileChange = (e) => {
 
 
 </MDBContainer>   
-        )
+        
+      );
+    };
+
+
+       
+        
 
 
 
-}
+
 
 export default EditVideo;

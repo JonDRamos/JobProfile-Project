@@ -1,3 +1,5 @@
+
+
 /////////////NOTES////////////////////
 //SEPERATE CARDS (MAIN CARD WITH IMG, NAME, CITY), (ABOUT), (WORK)/(RESUME)
 //CURRENT CARD IS TOO WIDE, LOOK AT LINKEDIN - ITS MUCH MORE NARROW
@@ -18,6 +20,60 @@ import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardText, MDBCardBody, MDBCar
 import Nav from 'react-bootstrap/Nav';
 import { MDBModal, MDBModalBody, MDBModalDialog, MDBModalContent, MDBModalHeader, MDBModalTitle } from 'mdb-react-ui-kit';
 
+////////// SOCIAL MEDIA ICON UPLOADS /////////////
+import tiktok from '../src/images/tiktok.png';
+import youtube from '../src/images/youtube.png';
+import twitter from '../src/images/twitter.png';
+import facebook from '../src/images/facebook.png';
+import instagram from '../src/images/instagram.png';
+import portfoliowebsite from '../src/images/portfoliowebsite.png';
+
+////////// SKILLS & LANGUAGES ICON UPLOADS/////////////
+import  anaconda  from '../src/images/skills & languages/anaconda.png';
+import  androidstudio  from '../src/images/skills & languages/androidstudio.png';
+import  angularjs  from '../src/images/skills & languages/angularjs.png';
+import  ansible  from '../src/images/skills & languages/ansible.png';
+import  apollo  from '../src/images/skills & languages/apollo.png';
+import  balenaetcher  from '../src/images/skills & languages/balenaetcher.png';
+import  c  from '../src/images/skills & languages/c.png';
+import  cplusplus  from '../src/images/skills & languages/cplusplus.png';
+import  clouddevelopment  from '../src/images/skills & languages/clouddevelopment.png';
+import  codeblocks  from '../src/images/skills & languages/codeblocks.png';
+import  csharp  from '../src/images/skills & languages/csharp.png';
+import  css3  from '../src/images/skills & languages/css3.png';
+import  drupal  from '../src/images/skills & languages/drupal.png';
+import  fedora  from '../src/images/skills & languages/fedora.png';
+import  flask  from '../src/images/skills & languages/flask.png';
+import  flutter  from '../src/images/skills & languages/flutter.png';
+import  forrst  from '../src/images/skills & languages/forrst.png';
+import  gatsbyjs  from '../src/images/skills & languages/gatsbyjs.png';
+import  graphql  from '../src/images/skills & languages/graphql.png';
+import  html5  from '../src/images/skills & languages/html5.png';
+import  icue  from '../src/images/skills & languages/icue.png';
+import  intellijidea  from '../src/images/skills & languages/intellijidea.png';
+import  javascript  from '../src/images/skills & languages/javascript.png';
+import  jupyter  from '../src/images/skills & languages/jupyter.png';
+import  linuxserver  from '../src/images/skills & languages/linuxserver.png';
+import  mariadb  from '../src/images/skills & languages/mariadb.png';
+import  microsoftvisio2019  from '../src/images/skills & languages/microsoftvisio2019.png';
+import  opencv  from '../src/images/skills & languages/opencv.png';
+import  php  from '../src/images/skills & languages/php.png';
+import  prometheus  from '../src/images/skills & languages/prometheus.png';
+import  pullrequest  from '../src/images/skills & languages/pullrequest.png';
+import  rproject  from '../src/images/skills & languages/rproject.png';
+import  ruby  from '../src/images/skills & languages/ruby.png';
+import  sourcecode  from '../src/images/skills & languages/sourcecode.png';
+import  spyder  from '../src/images/skills & languages/spyder.png';
+import  spyderide5  from '../src/images/skills & languages/spyderide5.png';
+import  swift  from '../src/images/skills & languages/swift.png';
+import  swiftui  from '../src/images/skills & languages/swiftui.png';
+import  terraform  from '../src/images/skills & languages/terraform.png';
+import  typescript  from '../src/images/skills & languages/typescript.png';
+import  undp  from '../src/images/skills & languages/undp.png';
+import  visualstudio  from '../src/images/skills & languages/visualstudio.png';
+import sourcetree from '../src/images/skills & languages/sourcetree.png';
+
+
 
 const { sessionStorage } = window;
 
@@ -32,32 +88,18 @@ function Profile(props) {
   const [project3, setproject3] = useState("");
   const [project4, setproject4] = useState("");
   const [project5, setproject5] = useState("");
-  const [cert1, setCert1] = useState("");
-  const [cert2, setCert2] = useState("");
+
   const [videoFile, setvideoFile] = useState("");
+
+  const [currentposition, setCurrentPosition] = useState("");
+const [currentemployer, setCurrentEmployer] = useState("");
+
 
 
   const [country, setCountry] = useState("");
     const [stateprovince, setStateProvince] = useState("");
-      const [educationschool, setEducationSchool] = useState("");
-        const [educationprogram, setEducationProgram] = useState("");
-          const [educationyear, setEducationYear] = useState("");
-            const [twitter, setTwitter] = useState("");
-              const [facebook, setFacebook] = useState("");
-                const [instagram, setInstagram] = useState("");
-                  const [website, setWebsite] = useState("");
-                    const [bootcampname, setBootCampName] = useState("");
-                      const [bootcampprogram, setBootCampProgram] = useState("");
-                        const [bootcampyear, setBootCampYear] = useState("");
-                          const [skilllang1, setSkilllang1] = useState("");
-                            const [skilllang2, setSkilllang2] = useState("");
-                              const [skilllang3, setSkilllang3] = useState("");
-                                const [skilllang4, setSkilllang4] = useState("");
-                                  const [skilllang5, setSkilllang5] = useState("");
-                                    const [skilllang6, setSkilllang6] = useState("");
-                                      const [skilllang7, setSkilllang7] = useState("");
-                                        const [skilllang8, setSkilllang8] = useState("");
-                                          const [skilllang9, setSkilllang9] = useState("");
+
+
   const navigate = useNavigate();
 
 
@@ -82,43 +124,78 @@ function Profile(props) {
         setproject3(response.data.project3);
         setproject4(response.data.project4);
         setproject5(response.data.project5);
-        setCert1(response.data.cert1);
-        setCert2(response.data.cert2);
+
         setvideoFile(response.data.videoFile);
 
         setCountry(response.data.country);
         setStateProvince(response.data.stateprovince);
-        setEducationSchool(response.data.educationschool);
-        setEducationProgram(response.data.educationprogram);
-        setEducationYear(response.data.educationyear);
-        setTwitter(response.data.twitter);
-        setFacebook(response.data.facebook);
-        setInstagram(response.data.instagram);
-        setWebsite(response.data.website);
-        setBootCampName(response.data.bootcampname);
-        setBootCampProgram(response.data.bootcampprogram);
-        setBootCampYear(response.data.bootcampyear);
-        setSkilllang1(response.data.skilllang1);
-        setSkilllang2(response.data.skilllang2);
-        setSkilllang3(response.data.skilllang3);
-        setSkilllang4(response.data.skilllang4);
-        setSkilllang5(response.data.skilllang5);
-        setSkilllang6(response.data.skilllang6);
-        setSkilllang7(response.data.skilllang7);
-        setSkilllang8(response.data.skilllang8);
-        setSkilllang9(response.data.skilllang9);
+        // setEducationSchool(response.data.educationschool);
+        // setEducationProgram(response.data.educationprogram);
+        // setEducationYear(response.data.educationyear);
+        // setBootCampName(response.data.bootcampname);
+        // setBootCampProgram(response.data.bootcampprogram);
+        // setBootCampYear(response.data.bootcampyear);
 
+        setCurrentPosition(response.data.current_position);
+        setCurrentEmployer(response.data.current_employer);
+          
 
       })
     }, []); 
     // pass an empty array as the second argument to useEffect to run it only once on mount
   
 
+    
+    ///////////////////////  DEGREE / CERTIFICACTION 1  //////////////////////////////////////////
+    const [cert1, setCert1] = useState("");
+    const [degree1, setDegree1] = useState("");
+    const [link1, setLink1] = useState("");
 
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    const userId = sessionStorage.getItem("userId");
+  
+    Axios.get(`http://localhost:3009/cert1/${userId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+    .then((response) => {
+      console.log(response.data);
+      setCert1(response.data.cert1); // Update the cert1 state with the received value
+      setDegree1(response.data.certification1);
+      setLink1(response.data.certification1link);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }, []);
+
+///////////////////////  DEGREE / CERTIFICACTION 2  //////////////////////////////////////////
+      const [cert2, setCert2] = useState("");
+      const [degree2, setDegree2] = useState("");
+      const [link2, setLink2] = useState("");
+
+    useEffect(() => {
+      const token = sessionStorage.getItem("token");
+      const userId = sessionStorage.getItem("userId");
+    
+      Axios.get(`http://localhost:3009/cert2/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        console.log(response.data);
+        setCert2(response.data.cert2); // Update the cert1 state with the received value
+        setDegree2(response.data.certification2);
+        setLink2(response.data.certification2link);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }, []);
 
 
   // Set up state to handle modal visibility
 const [isModalOpen, setIsModalOpen] = useState(false);
+const [isModalOpen1, setIsModalOpen1] = useState(false);
 const [isModalOpen2, setIsModalOpen2] = useState(false);
 const [isModalOpen3, setIsModalOpen3] = useState(false);
 const [selectedImage, setSelectedImage] = useState('');
@@ -136,12 +213,21 @@ const closeModal = () => {
 
 
   // Function to handle opening the modal and setting the selected image
+  const openModal1 = (image) => {
+    setSelectedImage(image);
+    setIsModalOpen1(true);
+  };
+
   const openModal2 = (image) => {
     setSelectedImage(image);
     setIsModalOpen2(true);
   };
   
   // Function to handle closing the modal
+  const closeModal1 = () => {
+    setIsModalOpen1(false);
+  };
+
   const closeModal2 = () => {
     setIsModalOpen2(false);
   };
@@ -156,6 +242,218 @@ const closeModal = () => {
     const closeModal3 = () => {
       setIsModalOpen3(false);
     };
+
+
+/////////////////////////    SKILLS .GET REQUEST  ///////////////////////////
+    const [selectedValuesSkills, setselectedValuesSkills] = useState({ skills: [] });
+
+    useEffect(() => {
+      const token = sessionStorage.getItem('token');
+      const userId = sessionStorage.getItem('userId');
+  
+      // Fetch the skills data and update the selectedValuesSkills
+      Axios.get(`http://localhost:3009/skills/${userId}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then((response) => {
+          const skillsData = response.data;
+          setselectedValuesSkills((prevselectedValuesSkills) => ({
+            ...prevselectedValuesSkills,
+            skills: skillsData,
+          }));
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
+
+    const skillIcons = {
+      anaconda :  anaconda ,
+      androidstudio :  androidstudio ,
+      angularjs :  angularjs ,
+      ansible :  ansible ,
+      apollo :  apollo ,
+      balenaetcher :  balenaetcher ,
+      c :  c ,
+      clouddevelopment :  clouddevelopment ,
+      codeblocks :  codeblocks ,
+      'c++' :  cplusplus ,
+      csharp :  csharp ,
+      css3 :  css3 ,
+      drupal :  drupal ,
+      fedora :  fedora ,
+      flask :  flask ,
+      flutter :  flutter ,
+      forrst :  forrst ,
+      gatsbyjs :  gatsbyjs ,
+      graphql :  graphql ,
+      html5 :  html5 ,
+      icue :  icue ,
+      intellijidea :  intellijidea ,
+      javascript :  javascript ,
+      jupyter :  jupyter ,
+      linuxserver :  linuxserver ,
+      mariadb :  mariadb ,
+      microsoftvisio2019 :  microsoftvisio2019 ,
+      opencv :  opencv ,
+      php :  php ,
+      prometheus :  prometheus ,
+      pullrequest :  pullrequest ,
+      rproject :  rproject ,
+      ruby :  ruby ,
+      sourcecode :  sourcecode ,
+      spyder :  spyder ,
+      spyderide5 :  spyderide5 ,
+      swift :  swift ,
+      swiftui :  swiftui ,
+      terraform :  terraform ,
+      typescript :  typescript ,
+      undp :  undp ,
+      visualstudio :  visualstudio ,
+      sourcetree: sourcetree
+    };
+  ///////////////////////////////////////// .GET PROFILE (SOCIAL MEDIA) /////////////////////////////////////////
+  const [socialMediaEntries, setSocialMediaEntries] = useState([
+    { media_type: '', text_value: '' },
+    { media_type: '', text_value: '' },
+    { media_type: '', text_value: '' },
+    { media_type: 'PortfolioWebsite', text_value: '' },
+  ]);
+
+
+
+  const mediaTypeImages = {
+    twitter: twitter,
+    facebook: facebook,
+    instagram: instagram,
+    tiktok: tiktok,
+    youtube: youtube,
+    portfoliowebsite:portfoliowebsite
+    
+  };
+  
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    const userId = sessionStorage.getItem("userId");
+  
+    Axios.get(`http://localhost:3009/socialmedia/${userId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        const socialMediaData = response.data;
+        // Process the social media data as needed
+        // For example, you can set it to a state variable
+        setSocialMediaEntries(socialMediaData);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+  
+
+
+
+/////////////////////////    TESTING .GET REQUEST  ///////////////////////////
+const [selectedValuesTests, setselectedValuesTests] = useState({testingAccepted: []});
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+Axios.get(`http://localhost:3009/testing/${userId}`, {
+  headers: { Authorization: `Bearer ${token}` },
+})
+  .then((response) => {
+    const testingData = response.data;
+    setselectedValuesTests((prevselectedValuesTests) => ({
+      ...prevselectedValuesTests,
+      testingAccepted: testingData,
+    }));
+  })
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+/////////////////////////    CURRENT POSITION + EMPLOYER .GET REQUEST  ///////////////////////////
+
+
+// useEffect(() => {
+//   const token = sessionStorage.getItem("token");
+//   const userId = sessionStorage.getItem("userId");
+
+//   Axios.get(`http://localhost:3009/education/${userId}`, {
+//     headers: { Authorization: `Bearer ${token}` },
+
+//   })
+//     .then((response) => {
+//       console.log(response.data);
+ 
+//       setSchoolName(response.data.schoolname);
+//       setSchoolYear(response.data.schoolyear);
+//       setSchoolProgram(response.data.schoolprogram);
+
+//     })
+//   }, []);
+
+
+/////////////////////////    EDUCATION .GET REQUEST  ///////////////////////////
+const [schoolname, setSchoolName] = useState("");
+const [schoolyear, setSchoolYear] = useState("");
+const [schoolprogram, setSchoolProgram] = useState("");
+
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/education/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+
+  })
+    .then((response) => {
+      console.log(response.data);
+ 
+      setSchoolName(response.data.schoolname);
+      setSchoolYear(response.data.schoolyear);
+      setSchoolProgram(response.data.schoolprogram);
+
+    })
+  }, []);
+
+/////////////////////////    BOOTCAMP .GET REQUEST  ///////////////////////////
+const [bootcampname, setBootCampName] = useState("");
+const [bootcampprogram, setBootCampProgram] = useState("");
+  const [bootcampyear, setBootCampYear] = useState("");
+
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/bootcamp/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+
+  })
+    .then((response) => {
+      console.log(response.data);
+ 
+      setBootCampName(response.data.bootcampname);
+      setBootCampProgram(response.data.bootcampprogram);
+      setBootCampYear(response.data.bootcampyear);
+
+    })
+  }, []);
+
+
+
+  
+
+
+const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...` : summary;
+
+
 
 
   return (
@@ -233,22 +531,46 @@ const closeModal = () => {
         </MDBCol>
 
 
+
+
         <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
   <img
     src={`http://localhost:3009/${cert1}`}
     alt="Project1"
     className="mt-1 mb-1 img-thumbnail"
-    style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal2(cert1)}
+    style={{ width: '300px', height:'220px', zIndex: '1', cursor: 'pointer' }}
+    onClick={() => openModal1(cert1)}
   />
 </MDBCol>
+
+<MDBModal tabIndex="-1" show={isModalOpen1} onHide={closeModal1}>
+  <MDBModalDialog className="modal-dialog-centered">
+    <MDBModalContent>
+      <MDBModalHeader>
+        <MDBModalTitle>{degree1} - {link1}</MDBModalTitle>
+        <button type="button" className="btn-close" onClick={closeModal1}></button>
+      </MDBModalHeader>
+      <MDBModalBody>
+        <img
+          src={`http://localhost:3009/${selectedImage}`}
+          alt="Selected Project1"
+          className="img-fluid"
+        />
+      </MDBModalBody>
+    </MDBModalContent>
+  </MDBModalDialog>
+</MDBModal>
+
+
+
+
 
 <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
   <img
     src={`http://localhost:3009/${cert2}`}
-    alt="Project1"
+    alt="Project2"
     className="mt-1 mb-1 img-thumbnail"
-    style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
+    style={{ width: '300px', height:'220px', zIndex: '1', cursor: 'pointer' }}
     onClick={() => openModal2(cert2)}
   />
 </MDBCol>
@@ -257,19 +579,20 @@ const closeModal = () => {
   <MDBModalDialog className="modal-dialog-centered">
     <MDBModalContent>
       <MDBModalHeader>
-        <MDBModalTitle>Cert Description * Cert Links</MDBModalTitle>
+       <MDBModalTitle>{degree1} - {link1}</MDBModalTitle>
         <button type="button" className="btn-close" onClick={closeModal2}></button>
       </MDBModalHeader>
       <MDBModalBody>
         <img
           src={`http://localhost:3009/${selectedImage}`}
-          alt="Selected Project"
+          alt="Selected Project2"
           className="img-fluid"
         />
       </MDBModalBody>
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal>
+
 
              
            </MDBRow>
@@ -282,7 +605,6 @@ const closeModal = () => {
 
 
 
-
 <div className="portfolioProjects2" style={{ height: '620px', overflowX: 'hidden' }}>
   <MDBContainer className="py-0" style={{ backgroundColor: 'transparent' }}>
     <MDBCol className="mb-0" style={{ width: '600px', minHeight: '200px', overflow: 'auto', overflowX: 'hidden' }}>
@@ -292,53 +614,126 @@ const closeModal = () => {
       <MDBCard style={{background: "white", margin: "20px", border: '1px lightgrey solid', maxWidth:"580px"}}>
   <MDBCardBody>
 
-              <div style={{ fontWeight:'bolder'}}>
-              {firstName} {lastName}
-              </div>  
+<div style={{ fontWeight: 'bolder' }}>
+  {firstName} {lastName}
+  {currentposition && currentemployer ? `, ${currentposition} at ${currentemployer}` : ''}
+
+  
+</div>
               <div>
               {city}, {stateprovince}, {country}
               </div>
-              Social Links -    
-              {twitter}
-              {facebook}
-              {instagram}
-              {website}
+
+              
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+  {socialMediaEntries.map((entry, index) => (
+    <div key={index} style={{ marginRight: '10px' }}>
+      {/* Display media type icon as clickable link */}
+      {mediaTypeImages.hasOwnProperty(entry.media_type.toLowerCase()) && (
+        <a href={entry.text_value.startsWith('http') ? entry.text_value : `//${entry.text_value}`} target="_blank" rel="noopener noreferrer">
+          <img
+            src={mediaTypeImages[entry.media_type.toLowerCase()]}
+            alt={entry.media_type}
+            style={{ width: '20px', height: '20px' }}
+          />
+        </a>
+      )}
+    </div>
+  ))}
+
+
+</div>
 
  
   </MDBCardBody> 
   </MDBCard>
 
-  <MDBCard style={{background: "white", margin: "20px", border: '1px lightgrey solid', maxWidth:"580px"}}>
-  <MDBCardBody>
-              <div style={{ height: 'auto'}}>
-              <div style={{ fontWeight:'bolder'}}>Description</div>
-              <br></br>
-              {summary}
-              <br></br>
-              </div>
-              </MDBCardBody> 
-  </MDBCard>
 
+{/* //////////////////////  DESCRIPTION  //////////////////////// */}
+
+<MDBCard style={{ background: 'white', margin: '20px', border: '1px lightgrey solid', maxWidth: '580px' }}>
+      <MDBCardBody>
+        <div style={{ height: 'auto' }}>
+          <div style={{ fontWeight: 'bolder' }}>Description</div>
+          <br />
+          {truncatedSummary}
+          <br />
+        </div>
+      </MDBCardBody>
+    </MDBCard>
  
-              <MDBCard style={{background: "white", margin: "20px", border: '1px lightgrey solid', maxWidth:"580px"}}>
+{/* //////////////////////  EDUCATION + bootcamp //////////////////////// */}
+
+<MDBCard style={{ background: 'white', margin: '20px', border: '1px lightgrey solid', maxWidth: '580px' }}>
+      <MDBCardBody>
+        <div style={{ height: 'auto' }}>
+          <div style={{ fontWeight: 'bolder' }}>Education</div>
+          <br />
+            {schoolname && schoolprogram && schoolyear ? ` School: ${schoolname},  ${schoolprogram}, ${schoolyear}` : ''}
+          <br />
+            {bootcampname && bootcampprogram && bootcampyear ? ` Bootcamp: ${bootcampname}, ${bootcampprogram}, ${bootcampyear}` : ''}
+        </div>
+      </MDBCardBody>
+    </MDBCard>
+
+{/* //////////////////////  SKILLS & LANGUAGES //////////////////////// */}
+<MDBCard style={{ background: "white", margin: "20px", border: '1px lightgrey solid', maxWidth: "580px" }}>
   <MDBCardBody>
-              <div>
-              <div style={{ fontWeight:'bolder'}}> Skills & Languages</div>
-              <br></br>
-              {skilllang1}
-             <br></br>
-              </div>
-              </MDBCardBody> 
-  </MDBCard>
-    
-              <MDBCard style={{background: "white", margin: "20px", border: '1px lightgrey solid', maxWidth:"580px"}}>
+    <div>
+      <div style={{ fontWeight: 'bolder' }}>Skills List</div>
+      <ul style={{ display: 'flex', listStyleType: 'none', padding: 0, flexWrap: 'wrap' }}>
+        {selectedValuesSkills.skills.map((skill, index) => (
+          <li
+            key={index}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginRight: '10px',
+              marginBottom: '10px',
+              padding: '5px 10px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              maxWidth: '100%',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis',
+              whiteSpace: 'nowrap',
+            }}
+          >
+            <img
+              src={skillIcons[skill]}
+              alt={skill}
+              style={{ width: '20px', height: '20px', marginRight: '5px' }}
+            />
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </MDBCardBody>
+</MDBCard>
+
+
+{/* //////////////////////  TESTING   //////////////////////// */}
+<MDBCard style={{background: "white", margin: "20px", border: '1px lightgrey solid', maxWidth:"580px"}}>
   <MDBCardBody>
-              <div>
-              <div style={{ fontWeight:'bolder'}}> Accepted Testing</div>
-              <br></br>
-              {skilllang1}
-             <br></br>
-              </div>
+  <div>
+  <div style={{ fontWeight: 'bolder' }}>Testing Accepted</div>
+      <ul style={{ display: 'flex', listStyleType: 'none', padding: 0 }}>
+        {selectedValuesTests.testingAccepted.map((testingAccepted, index) => (
+          <li
+            key={index}
+            style={{
+              marginRight: '10px',
+              padding: '5px 10px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+            }}
+          >
+            {testingAccepted}
+          </li>
+        ))}
+      </ul>
+    </div>
               </MDBCardBody> 
   </MDBCard>
 
@@ -480,27 +875,7 @@ const closeModal = () => {
 
 </div>
 
-<MDBModal tabIndex="-1" show={isModalOpen2} onHide={closeModal2}>
-  <MDBModalDialog className="modal-dialog-centered">
-    <MDBModalContent>
-      <MDBModalHeader>
-        <MDBModalTitle>Project Description 2 * Github/Demo Links 2</MDBModalTitle>
-        <button type="button" className="btn-close" onClick={closeModal2}></button>
-      </MDBModalHeader>
-      <MDBModalBody>
-        <img
-          src={`http://localhost:3009/${selectedImage}`}
-          alt="Selected Project2"
-          className="img-fluid"
-        />
-      </MDBModalBody>
-    </MDBModalContent>
-  </MDBModalDialog>
-</MDBModal>
-
-
-
-
+\
 
 <div className="project3" style={{display:'flex', width:'650px'}}>
 

@@ -47,7 +47,15 @@ function NavbarHead() {
 
   <Container fluid className="NavContainer" style={{height:'100px', display: 'flex', justifyContent: 'space-around'}}>
 
- 
+  <div className="NavLogo">
+    <Navbar.Brand href="/Home" style={{ fontSize: '25px', fontFamily: 'TimesNewRoman', fontWeight: 'bold'}}>
+   Tech Developer Network
+   <br></br>
+   Tech Developer Connect
+      </Navbar.Brand>
+    </div> 
+
+
 <div style={{color:"white"}}>
   tezsdkdsdkmzdzddfsddssasd
 </div>
@@ -55,11 +63,7 @@ function NavbarHead() {
  
 
  
-    <div className="NavLogo">
-    <Navbar.Brand href="/Home" style={{ fontSize: '45px', fontFamily: 'TimesNewRoman', fontWeight: 'bold'}}>
-   console.log(jobs)[.com]
-      </Navbar.Brand>
-    </div> 
+   
 
 
 

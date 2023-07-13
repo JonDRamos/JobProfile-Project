@@ -579,7 +579,7 @@ const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...
   <MDBModalDialog className="modal-dialog-centered">
     <MDBModalContent>
       <MDBModalHeader>
-       <MDBModalTitle>{degree1} - {link1}</MDBModalTitle>
+       <MDBModalTitle>{degree2} - {link2}</MDBModalTitle>
         <button type="button" className="btn-close" onClick={closeModal2}></button>
       </MDBModalHeader>
       <MDBModalBody>
@@ -875,7 +875,7 @@ const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...
 
 </div>
 
-\
+
 
 <div className="project3" style={{display:'flex', width:'650px'}}>
 

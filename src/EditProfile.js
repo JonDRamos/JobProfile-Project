@@ -446,6 +446,7 @@ const handleEditProfile = (e) => {
 
 <h5 style={{fontWeight:'bold'}}>Basic Info</h5>
 
+
                   <label htmlFor="firstName">First Name:</label>
                   <input
                     type="text"
@@ -586,6 +587,8 @@ const handleEditProfile = (e) => {
 <h5 style={{fontWeight:'bold', marginTop:'20px'}}>BootCamp</h5>
 
                   <MDBCard  style={{margin:'5px', border:'none'}}>
+
+                    
                   <label htmlFor="bootcampname">Bootcamp Name</label>
                   <input
                     type="text"

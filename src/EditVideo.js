@@ -273,7 +273,7 @@ const handleLink2Change = (e) => {
             src={`http://localhost:3009/${imageFile}`}
             className="mt-4 mb-2"
             fluid
-            style={{ width: '600px', zIndex: '1' }}
+            style={{ width: '600px', height: 'auto', zIndex: '1' }}
           />
         </MDBCol>
 
@@ -318,7 +318,7 @@ const handleLink2Change = (e) => {
       </MDBTypography>
       {videoFile && (
       <div className="mt-4 mb-2" style={{ width: '100%' }}>
-        <video controls style={{ width: '600px' }}>
+        <video controls style={{ width: '600px', height: 'auto' }}>
           <source src={`http://localhost:3009/${videoFile}`} type="video/mp4" />
         </video>
       </div>

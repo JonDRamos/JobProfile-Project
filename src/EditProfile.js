@@ -97,7 +97,7 @@ function EditProfile(props) {
 
 
 
-  const [databaseValues, setDatabaseValues] = useState(null); // Added state variable
+  // const [databaseValues, setDatabaseValues] = useState(null); // Added state variable
 
 
 
@@ -122,9 +122,6 @@ function EditProfile(props) {
 
       setCurrentPosition(response.data.current_position);
       setCurrentEmployer(response.data.current_employer);
-
-
-      setDatabaseValues(response.data); // Update database values state      
          });
   }, []);
 
@@ -278,7 +275,6 @@ function EditProfile(props) {
         console.log(error);
       });
   }, []);
-  
 
   const mediaTypeImages = {
     twitter: twitter,
@@ -289,7 +285,6 @@ function EditProfile(props) {
     portfoliowebsite:portfoliowebsite
     
   };
-  
   
   const [socialMediaEntries, setSocialMediaEntries] = useState([
     { media_type: '', text_value: '' },
@@ -305,10 +300,8 @@ function EditProfile(props) {
     setSocialMediaEntries(updatedEntries);
   };
   
+
   
-
-
-
 const handleEditProfile = (e) => {
   e.preventDefault();
   console.log("handleEditProfile called");
@@ -317,6 +310,7 @@ const handleEditProfile = (e) => {
 
 
     const formData = new FormData();
+
     formData.append("firstname", firstName);
     formData.append("lastname", lastName);
     formData.append("city", city);
@@ -771,6 +765,7 @@ const handleEditProfile = (e) => {
                 <MDBBtn type="submit" color="primary" className="mr-2" >
                   Save
                 </MDBBtn>
+                
                 <MDBBtn onClick={handleCancel} color="danger">
                   Cancel
                 </MDBBtn>

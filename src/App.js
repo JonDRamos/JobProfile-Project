@@ -10,6 +10,7 @@ import EditProfile from './EditProfile';
 import UploadProjects from './UploadProjects';
 import EditVideo from './EditVideo';
 import { useState} from 'react';
+import PublicProfile from "./PublicProfile";
 
 
 import './App.css';
@@ -35,6 +36,7 @@ function App() {
                     <Route path="EditProfile" element={<EditProfile/>} />
                     <Route path="UploadProjects" element={<UploadProjects/>} />
                     <Route path="EditVideo" element={<EditVideo/>} />
+                    <Route path="/PublicProfile/:userId" component={PublicProfile} />
 
 
 

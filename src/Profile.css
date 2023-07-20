@@ -1,5 +1,5 @@
 .portfolioProjects2::-webkit-scrollbar {
-    width: 8px;
+    width: 12px;
     background-color: transparent;
   }
   
@@ -10,6 +10,49 @@
   .portfolioProjects2:hover::-webkit-scrollbar-thumb {
     background-color: grey;
   }
+
+
+
+
+  
+  .projectDescription::-webkit-scrollbar {
+    width: 8px;
+    background-color: transparent;
+  }
+  
+  .projectDescription::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  .projectDescription:hover::-webkit-scrollbar-thumb {
+    background-color: grey;
+  }
+
+
+
+.projectDetails {
+  font-size: 14px;
+}
+
+
+
+
+  
+  .projectsall::-webkit-scrollbar {
+    width: 12px;
+    background-color: transparent;
+  }
+  
+  .projectsall::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  .projectsall:hover::-webkit-scrollbar-thumb {
+    background-color: grey;
+  }
+
+
+
 
 
   .profileImage {

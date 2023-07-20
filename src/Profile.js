@@ -90,14 +90,10 @@ function Profile(props) {
   const [project5, setproject5] = useState("");
 
   const [videoFile, setvideoFile] = useState("");
-
   const [currentposition, setCurrentPosition] = useState("");
-const [currentemployer, setCurrentEmployer] = useState("");
-
-
-
+  const [currentemployer, setCurrentEmployer] = useState("");
   const [country, setCountry] = useState("");
-    const [stateprovince, setStateProvince] = useState("");
+  const [stateprovince, setStateProvince] = useState("");
 
 
   const navigate = useNavigate();
@@ -376,26 +372,6 @@ Axios.get(`http://localhost:3009/testing/${userId}`, {
   });
 }, []);
 
-/////////////////////////    CURRENT POSITION + EMPLOYER .GET REQUEST  ///////////////////////////
-
-
-// useEffect(() => {
-//   const token = sessionStorage.getItem("token");
-//   const userId = sessionStorage.getItem("userId");
-
-//   Axios.get(`http://localhost:3009/education/${userId}`, {
-//     headers: { Authorization: `Bearer ${token}` },
-
-//   })
-//     .then((response) => {
-//       console.log(response.data);
- 
-//       setSchoolName(response.data.schoolname);
-//       setSchoolYear(response.data.schoolyear);
-//       setSchoolProgram(response.data.schoolprogram);
-
-//     })
-//   }, []);
 
 
 /////////////////////////    EDUCATION .GET REQUEST  ///////////////////////////
@@ -446,17 +422,173 @@ useEffect(() => {
     })
   }, []);
 
+  const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...` : summary;
 
 
-  
+ //////////////////////////////////Project 1///////////////////////////////// 
+
+ 
+ const [project1title, setTitle_project1] = useState("");
+ const [project1gitlink, setGitlink_project1] = useState("");
+ const [project1demolink, setDemolink_project1] = useState("");
+ const [project1description, setDescription_project1] = useState("");
+ const [project1thumbnail, setThumbnail_project1] = useState("");
+ const [selectedValuesSkills1, setSelectedValuesSkills1] = useState({ skills: [] });
+ 
+ useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/project1API/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then((response) => {
+    console.log(response.data);
+    setTitle_project1(response.data.project1title);
+    setGitlink_project1(response.data.project1gitlink);
+    setDemolink_project1(response.data.project1demolink);
+    setDescription_project1(response.data.project1description);
+    setThumbnail_project1(response.data.project1thumbnail);
+  })
+// these white variables are wahts connected to the backend, so should be the same name as the table column names.
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/project1skills/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((response) => {
+      const skillsData = response.data;
+      setSelectedValuesSkills1((prevselectedValuesSkills1) => ({
+        ...prevselectedValuesSkills1,
+        skills: skillsData,
+      }));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, []);
 
 
-const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...` : summary;
+
+ //////////////////////////////////Project 2///////////////////////////////// 
+
+ 
+ const [project3title, setTitle_project3] = useState("");
+ const [project3gitlink, setGitlink_project3] = useState("");
+ const [project3demolink, setDemolink_project3] = useState("");
+ const [project3description, setDescription_project3] = useState("");
+ const [project3thumbnail, setThumbnail_project3] = useState("");
+ const [selectedValuesSkills3, setSelectedValuesSkills3] = useState({ skills: [] });
+ 
+ useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/project3API/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then((response) => {
+    console.log(response.data);
+    setTitle_project3(response.data.project3title);
+    setGitlink_project3(response.data.project3gitlink);
+    setDemolink_project3(response.data.project3demolink);
+    setDescription_project3(response.data.project3description);
+    setThumbnail_project3(response.data.project3thumbnail);
+  })
+// these white variables are wahts connected to the backend, so should be the same name as the table column names.
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/project3skills/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((response) => {
+      const skillsData = response.data;
+      setSelectedValuesSkills3((prevselectedValuesSkills3) => ({
+        ...prevselectedValuesSkills3,
+        skills: skillsData,
+      }));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, []);
 
 
 
+ //////////////////////////////////Project 2///////////////////////////////// 
+
+ 
+ const [project2title, setTitle_project2] = useState("");
+ const [project2gitlink, setGitlink_project2] = useState("");
+ const [project2demolink, setDemolink_project2] = useState("");
+ const [project2description, setDescription_project2] = useState("");
+ const [project2thumbnail, setThumbnail_project2] = useState("");
+ const [selectedValuesSkills2, setSelectedValuesSkills2] = useState({ skills: [] });
+ 
+ useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/project2API/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then((response) => {
+    console.log(response.data);
+    setTitle_project2(response.data.project2title);
+    setGitlink_project2(response.data.project2gitlink);
+    setDemolink_project2(response.data.project2demolink);
+    setDescription_project2(response.data.project2description);
+    setThumbnail_project2(response.data.project2thumbnail);
+  })
+// these white variables are wahts connected to the backend, so should be the same name as the table column names.
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/project2skills/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((response) => {
+      const skillsData = response.data;
+      setSelectedValuesSkills2((prevselectedValuesSkills2) => ({
+        ...prevselectedValuesSkills2,
+        skills: skillsData,
+      }));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, []);
+
+
+
+//////////////return////////////////////
 
   return (
+
+
+
+
+
 
 
 <div>
@@ -747,57 +879,122 @@ const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...
     </MDBContainer>
     </div>
 
+{/* ////////////////////////////////////////project side///////////////////////// */}
 
     <div className="porfoliioProjects3">
-    <MDBContainer className="py-0 h-100" style={{backgroundColor:'transparent' }}>
+<MDBContainer className="py-0 h-100" style={{backgroundColor:'transparent' }}>
    
-   <MDBCol className="mb-1" style={{ width: '600px', minHeight: '500px'}}>
+<MDBCol className="mb-1 projectsall" style={{ width: '600px', maxHeight: '650px', overflowY: 'auto', overflowX: 'hidden'}}>
 
-           <MDBRow style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+<MDBRow style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
 
           
 
-
-
- <div className="project1" style={{display:'flex', width:'650px'}}>
+{/* //////////////////////Project 1///////////////////////////////////   */}
+ <div className="project1" style={{display:'flex', width:'650px', borderBottom:'lightgrey solid 1px'}}>
 
  <div>
-<MDBCol className="mb-2" style={{ width:'300px' }}>
+<MDBCol className="mb-4 mt-4" style={{ width:'300px' }}>
   <img
-    src={`http://localhost:3009/${project1}`}
+    src={`http://localhost:3009/${project1thumbnail}`}
     alt="Project1"
     className="mt-1 mb-1 img-thumbnail"
     style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal(project1)}
+    onClick={() => openModal(project1thumbnail)}
   />
 </MDBCol>
 </div>
 
-<div className="project1Description">
-<MDBCol className="mb-2" style={{ width:'300px' }}>
+<div className="projectDescription" style={{overflowY: 'auto', overflowX: 'hidden'}} >
+<MDBCol className="mb-2" style={{ width:'280px' }}>
 
-<MDBCard style={{background: "none", margin: "0", border: 'none', maxWidth:"300px", maxHeight:"200px"}}>
+<MDBCard style={{background: "none", margin: "0", maxWidth:"250x", maxHeight:"250px", border: 'none'}}>
   <MDBCardBody>
 
-              <div style={{ fontWeight:'bolder'}}>
-              Project Title
-              </div>  
-              <div>
-              Description: sasdasdasdasda
-              </div>
-              <div>
-              Stack Used 
-              </div>
-              <div style={{ fontWeight:'bolder'}}>
-              Links
-              </div>
-              Live link
-              <br></br>
-              Git Link
+  <div style={{ fontWeight: 'bolder'}}>
+  {project1title}
+  <br></br> 
+
+
+<div style={{display: "flex"}} >
+
+  <div>
+  {project1gitlink && (
+     <a
+     href={project1gitlink.startsWith("http") ? project1gitlink : `https://${project1gitlink}`}
+     target="_blank"
+     rel="noopener noreferrer"
+   >
+     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+    </a>
+  )}
+</div>
+
+
+<div>
+  {project1demolink && (
+         <a
+         href={project1demolink.startsWith("http") ? project1demolink : `https://${project1demolink}`}
+         target="_blank"
+         rel="noopener noreferrer"
+       >
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+    </a>
+  )}
+</div>
+</div>
+
+<div style={{ maxHeight: '120px'}}>
+  <ul
+    style={{
+      display: 'flex',
+      listStyleType: 'none',
+      padding: 0,
+      flexWrap: 'wrap',
+      margin: 0,
+    }}
+  >
+    {selectedValuesSkills1.skills.map((skill, index) => (
+      <li
+        key={index}
+        style={{
+          fontSize:"14px",
+          display: 'flex',
+          marginTop:"5px",
+          alignItems: 'center',
+          maxWidth: '100%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <img
+          src={skillIcons[skill]}
+          alt={skill}
+
+          style={{ width: '20px', height: '20px', marginRight: '5px' }}
+        />
+
+      </li>
+    ))}
+  </ul>
+</div>
+
+<div className="projectDetails" style={{ fontWeight: 'lighter', marginTop:"10px"}}>
+  {project1description}
+  </div>
+  </div>
 
  
-  </MDBCardBody> 
-  </MDBCard>
+    
+  </MDBCardBody>
+</MDBCard>
+
 
 </MDBCol>
 
@@ -809,12 +1006,47 @@ const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...
   <MDBModalDialog className="modal-dialog-centered">
     <MDBModalContent>
       <MDBModalHeader>
-        <MDBModalTitle>Project Description * Github/Demo Links</MDBModalTitle>
+        <MDBModalTitle>
+
+        <div style={{display: "flex"}} >
+
+<div>
+{project1gitlink && (
+   <a
+   href={project1gitlink.startsWith("http") ? project1gitlink : `https://${project1gitlink}`}
+   target="_blank"
+   rel="noopener noreferrer"
+ >
+   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+  </a>
+)}
+</div>
+<div>
+  {project1demolink && (
+         <a
+         href={project1demolink.startsWith("http") ? project1demolink : `https://${project1demolink}`}
+         target="_blank"
+         rel="noopener noreferrer"
+       >
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+    </a>
+  )}
+</div>
+
+
+</div>
+
+        </MDBModalTitle>
         <button type="button" className="btn-close" onClick={closeModal}></button>
       </MDBModalHeader>
       <MDBModalBody>
         <img
-          src={`http://localhost:3009/${selectedImage}`}
+          src={`http://localhost:3009/${project1thumbnail}`}
           alt="Selected Project"
           className="img-fluid"
         />
@@ -822,165 +1054,369 @@ const truncatedSummary = summary.length > 500 ? `${summary.substring(0, 500)}...
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal>
+</MDBRow>
 
-       
+<br></br>
+<MDBRow style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+
+          
+
+{/* //////////////////////Project 2///////////////////////////////////   */}
+ <div className="project2" style={{display:'flex', width:'650px', borderBottom:'lightgrey solid 1px'}}>
 
 
-
-        
-<div className="project2" style={{display:'flex', width:'650px'}}>
-
-
-  <div>
-<MDBCol className="mb-2" style={{ width:'300px' }}>
+ <div>
+<MDBCol className="mb-4 mt-4" style={{ width:'300px' }}>
   <img
-    src={`http://localhost:3009/${project2}`}
+    src={`http://localhost:3009/${project2thumbnail}`}
     alt="Project2"
     className="mt-1 mb-1 img-thumbnail"
     style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal2(project2)}
+    onClick={() => openModal(project2thumbnail)}
   />
 </MDBCol>
 </div>
 
-<div className="project2Description">
-<MDBCol className="mb-2" style={{ width:'300px' }}>
+<div className="projectDescription" style={{overflowY: 'auto', overflowX: 'hidden'}} >
+<MDBCol className="mb-2" style={{ width:'280px' }}>
 
-<MDBCard style={{background: "none", margin: "0", border: 'none', maxWidth:"300px", maxHeight:"200px"}}>
+<MDBCard style={{background: "none", margin: "0", maxWidth:"250x", maxHeight:"250px", border: 'none'}}>
   <MDBCardBody>
 
-              <div style={{ fontWeight:'bolder'}}>
-              Project Title
-              </div>  
-              <div>
-              Description: sasdasdasdasda
-              </div>
-              <div>
-              Stack Used 
-              </div>
-              <div style={{ fontWeight:'bolder'}}>
-              Links
-              </div>
-              Live link
-              <br></br>
-              Git Link
-
- 
-  </MDBCardBody> 
-  </MDBCard>
-
-</MDBCol>
-
-</div>
-
-</div>
+  <div style={{ fontWeight: 'bolder'}}>
+  {project2title}
+  <br></br> 
 
 
-
-<div className="project3" style={{display:'flex', width:'650px'}}>
+<div style={{display: "flex"}} >
 
   <div>
-<MDBCol className="mb-2"  style={{ width:'300px' }}>
-  <img
-    src={`http://localhost:3009/${project3}`}
-    alt="Project3"
-    className="mt-1 mb-1 img-thumbnail"
-    style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal3(project3)}
-  />
+  {project2gitlink && (
+     <a
+     href={project2gitlink.startsWith("http") ? project2gitlink : `https://${project2gitlink}`}
+     target="_blank"
+     rel="noopener noreferrer"
+   >
+     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+    </a>
+  )}
+</div>
+
+
+<div>
+  {project2demolink && (
+         <a
+         href={project2demolink.startsWith("http") ? project2demolink : `https://${project2demolink}`}
+         target="_blank"
+         rel="noopener noreferrer"
+       >
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+    </a>
+  )}
+</div>
+</div>
+
+<div style={{ maxHeight: '120px'}}>
+  <ul
+    style={{
+      display: 'flex',
+      listStyleType: 'none',
+      padding: 0,
+      flexWrap: 'wrap',
+      margin: 0,
+    }}
+  >
+    {selectedValuesSkills2.skills.map((skill, index) => (
+      <li
+        key={index}
+        style={{
+          fontSize:"14px",
+          display: 'flex',
+          marginTop:"5px",
+          alignItems: 'center',
+          maxWidth: '100%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <img
+          src={skillIcons[skill]}
+          alt={skill}
+
+          style={{ width: '20px', height: '20px', marginRight: '5px' }}
+        />
+
+      </li>
+    ))}
+  </ul>
+</div>
+
+<div className="projectDetails"  style={{ fontWeight: 'lighter', marginTop:"10px"}}>
+  {project2description}
+  </div>
+  </div>
+
+
+    
+  </MDBCardBody>
+</MDBCard>
+
+
 </MDBCol>
-</div>
-
-
-<div className="project3Description">
-<MDBCol className="mb-2" style={{ width:'300px' }}>
-
-<MDBCard style={{background: "none", margin: "0", border: 'none', maxWidth:"300px", maxHeight:"200px"}}>
-  <MDBCardBody>
-
-              <div style={{ fontWeight:'bolder'}}>
-              Project Title
-              </div>  
-              <div>
-              Description: sasdasdasdasda
-              </div>
-              <div>
-              Stack Used 
-              </div>
-              <div style={{ fontWeight:'bolder'}}>
-              Links
-              </div>
-              Live link
-              <br></br>
-              Git Link
-
- 
-  </MDBCardBody> 
-  </MDBCard>
-
-</MDBCol>
 
 </div>
 
 </div>
 
-<MDBModal tabIndex="-1" show={isModalOpen3} onHide={closeModal3}>
+<MDBModal tabIndex="-1" show={isModalOpen} onHide={closeModal}>
   <MDBModalDialog className="modal-dialog-centered">
     <MDBModalContent>
       <MDBModalHeader>
-        <MDBModalTitle>Project Description 3 * Github/Demo Links 3</MDBModalTitle>
-        <button type="button" className="btn-close" onClick={closeModal3}></button>
+        <MDBModalTitle>
+
+        <div style={{display: "flex"}} >
+
+<div>
+{project2gitlink && (
+   <a
+   href={project2gitlink.startsWith("http") ? project2gitlink : `https://${project2gitlink}`}
+   target="_blank"
+   rel="noopener noreferrer"
+ >
+   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+  </a>
+)}
+</div>
+<div>
+  {project2demolink && (
+         <a
+         href={project2demolink.startsWith("http") ? project2demolink : `https://${project2demolink}`}
+         target="_blank"
+         rel="noopener noreferrer"
+       >
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+    </a>
+  )}
+</div>
+
+
+</div>
+
+        </MDBModalTitle>
+        <button type="button" className="btn-close" onClick={closeModal}></button>
       </MDBModalHeader>
       <MDBModalBody>
         <img
-          src={`http://localhost:3009/${selectedImage}`}
-          alt="Selected Project3"
+          src={`http://localhost:3009/${project2thumbnail}`}
+          alt="Selected Project"
           className="img-fluid"
         />
       </MDBModalBody>
     </MDBModalContent>
   </MDBModalDialog>
 </MDBModal>
+</MDBRow>
+
+<br></br>
+
+<MDBRow style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+
+          
+
+{/* //////////////////////Project 3///////////////////////////////////   */}
+ <div className="project1" style={{display:'flex', width:'650px',borderBottom:'lightgrey solid 1px'}}>
+
+ <div>
+<MDBCol className="mb-4 mt-4" style={{ width:'300px' }}>
+  <img
+    src={`http://localhost:3009/${project3thumbnail}`}
+    alt="Project3"
+    className="mt-1 mb-1 img-thumbnail"
+    style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
+    onClick={() => openModal(project3thumbnail)}
+  />
+</MDBCol>
+</div>
+
+<div className="projectDescription" style={{overflowY: 'auto', overflowX: 'hidden'}} >
+<MDBCol className="mb-2" style={{ width:'280px' }}>
+
+<MDBCard style={{background: "none", margin: "0", maxWidth:"250x", maxHeight:"250px", border: 'none'}}>
+  <MDBCardBody>
+
+  <div style={{ fontWeight: 'bolder'}}>
+  {project3title}
+  <br></br> 
 
 
-{/* <MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
-  <img
-    src={`http://localhost:3009/${project4}`}
-    alt="Project1"
-    className="mt-1 mb-1 img-thumbnail"
-    style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal(project4)}
-  />
-</MDBCol><MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
-  <img
-    src={`http://localhost:3009/${project5}`}
-    alt="Project1"
-    className="mt-1 mb-1 img-thumbnail"
-    style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal(project5)}
-  />
-</MDBCol><MDBCol className="mb-2" style={{ flexBasis: '50%', maxWidth: '50%' }}>
-  <img
-    src={`http://localhost:3009/${project1}`}
-    alt="Project1"
-    className="mt-1 mb-1 img-thumbnail"
-    style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal(project1)}
-  />
-</MDBCol> */}
-             
-           </MDBRow>
+<div style={{display: "flex"}} >
+
+  <div>
+  {project3gitlink && (
+     <a
+     href={project3gitlink.startsWith("http") ? project3gitlink : `https://${project3gitlink}`}
+     target="_blank"
+     rel="noopener noreferrer"
+   >
+     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+        <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+      </svg>
+    </a>
+  )}
+</div>
+
+
+<div>
+  {project3demolink && (
+         <a
+         href={project1demolink.startsWith("http") ? project3demolink : `https://${project3demolink}`}
+         target="_blank"
+         rel="noopener noreferrer"
+       >
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+    </a>
+  )}
+</div>
+</div>
+
+<div style={{ maxHeight: '120px'}}>
+  <ul
+    style={{
+      display: 'flex',
+      listStyleType: 'none',
+      padding: 0,
+      flexWrap: 'wrap',
+      margin: 0,
+    }}
+  >
+    {selectedValuesSkills3.skills.map((skill, index) => (
+      <li
+        key={index}
+        style={{
+          fontSize:"14px",
+          display: 'flex',
+          marginTop:"5px",
+          alignItems: 'center',
+          maxWidth: '100%',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        }}
+      >
+        <img
+          src={skillIcons[skill]}
+          alt={skill}
+
+          style={{ width: '20px', height: '20px', marginRight: '5px' }}
+        />
          
+      </li>
+    ))}
+  </ul>
+</div>
 
-           </MDBCol>
-
-
-
-
- </MDBContainer>
- </div>
-   
+<div className="projectDetails" style={{ fontWeight: 'lighter', marginTop:"10px"}}>
+  {project3description}
   </div>
+  </div>
+
+ 
+    
+  </MDBCardBody>
+</MDBCard>
+
+
+</MDBCol>
+
+</div>
+
+</div>
+
+<MDBModal tabIndex="-1" show={isModalOpen} onHide={closeModal}>
+  <MDBModalDialog className="modal-dialog-centered">
+    <MDBModalContent>
+      <MDBModalHeader>
+        <MDBModalTitle>
+
+        <div style={{display: "flex"}} >
+
+<div>
+{project3gitlink && (
+   <a
+   href={project3gitlink.startsWith("http") ? project3gitlink : `https://${project3gitlink}`}
+   target="_blank"
+   rel="noopener noreferrer"
+ >
+   <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-github" viewBox="0 0 16 16">
+      <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+    </svg>
+  </a>
+)}
+</div>
+<div>
+  {project3demolink && (
+         <a
+         href={project3demolink.startsWith("http") ? project3demolink : `https://${project3demolink}`}
+         target="_blank"
+         rel="noopener noreferrer"
+       >
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-link-45deg" viewBox="0 0 16 16">
+  <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+  <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+</svg>
+    </a>
+  )}
+</div>
+
+
+</div>
+
+        </MDBModalTitle>
+        <button type="button" className="btn-close" onClick={closeModal}></button>
+      </MDBModalHeader>
+      <MDBModalBody>
+        <img
+          src={`http://localhost:3009/${project3thumbnail}`}
+          alt="Selected Project"
+          className="img-fluid"
+        />
+      </MDBModalBody>
+    </MDBModalContent>
+  </MDBModalDialog>
+</MDBModal>
+</MDBRow>
+
+
+
+
+
+
+
+
+
+</MDBCol>
+</MDBContainer>
+ </div>
+
+
+
+  
+   
+</div>
 </div>
 
 

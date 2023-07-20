@@ -35,8 +35,9 @@ function App() {
                     <Route path="Profile" element={<Profile/>} />
                     <Route path="EditProfile" element={<EditProfile/>} />
                     <Route path="UploadProjects" element={<UploadProjects/>} />
-                    <Route path="EditVideo" element={<EditVideo/>} />
-                    <Route path="/PublicProfile/:userId" component={PublicProfile} />
+                    <Route path="EditVideo" element=
+                    {<EditVideo/>} />
+                    <Route path="/PublicProfile/:userId" element={<PublicProfile/>} />
 
 
 

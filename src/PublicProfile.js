@@ -16,11 +16,10 @@ function PublicProfile() {
 
     axios.get(`http://localhost:3009/pubprofile/${userId}`)
       .then((response) => {
-        console.log(response.data);
-
-
+       
         setUserFirstName(response.data.firstname);
         setUserLastName(response.data.lastname);
+        console.log(response.data);
         // Update the remaining state variables with the received data...
       })
       .catch(error => console.error(error));
@@ -29,12 +28,12 @@ function PublicProfile() {
 
   return (
     <MDBContainer className="py-0" style={{ backgroundColor: 'transparent' }}>
-      <MDBCard style={{ background: "white", margin: "20px", border: '1px lightgrey solid', maxWidth: "580px" }}>
+      <MDBCard style={{ background: "white", margin: "20px", border: '1px black solid', maxWidth: "580px" }}>
         <MDBCardBody>
         <div style={{ fontWeight: 'bolder' }}>
   {userFirstName} {userLastName}
 </div>
-
+          {/* Add the remaining JSX components that display the other state variables */}
         </MDBCardBody>
       </MDBCard>
     </MDBContainer>

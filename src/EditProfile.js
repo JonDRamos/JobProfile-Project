@@ -10,7 +10,7 @@ import youtube from '../src/images/youtube.png';
 import twitter from '../src/images/twitter.png';
 import facebook from '../src/images/facebook.png';
 import instagram from '../src/images/instagram.png';
-import portfoliowebsite from '../src/images/portfoliowebsite.png';
+import website from '../src/images/portfoliowebsite.png';
 
 
 
@@ -282,7 +282,7 @@ function EditProfile(props) {
     instagram: instagram,
     tiktok: tiktok,
     youtube: youtube,
-    portfoliowebsite:portfoliowebsite
+    website:website
     
   };
   
@@ -290,7 +290,7 @@ function EditProfile(props) {
     { media_type: '', text_value: '' },
     { media_type: '', text_value: '' },
     { media_type: '', text_value: '' },
-    { media_type: 'PortfolioWebsite', text_value: '' },
+    { media_type: '', text_value: '' },
   ]);
   
   const handleInputChange = (index, event) => {
@@ -704,6 +704,27 @@ const handleEditProfile = (e) => {
   />
 </div>
 
+{/* /////////////////////// TESTING////////////////////////////// */}
+
+<div>
+<h5 style={{fontWeight:'bold', marginTop:'20px'}}>Testing</h5>
+  <Select
+    isMulti
+    options={[
+      { value: 'Leetcode', label: 'Leetcode' },
+      { value: 'Take Home Assignment', label: 'Take Home Assignment' },
+      { value: 'Pair Programming', label: 'Pair Programming' }
+    ]}
+    onChange={(selectedOptions) => {
+      const selectedTesting = selectedOptions ? selectedOptions.map(option => option.value) : [];
+      setselectedValuesTests(prevValues => ({
+        ...prevValues,
+        testingAccepted: selectedTesting
+      }));
+    }}
+    value={selectedValuesTests.testingAccepted ? selectedValuesTests.testingAccepted.map(tests => ({ value: tests, label: tests })) : []}
+  />
+</div>
 
 
 {/* /////////////////////// SOCIAL MEDIA RETURN ////////////////////////////// */}

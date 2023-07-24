@@ -83,12 +83,6 @@ function Profile(props) {
   const [lastName, setLastName] = useState("");
   const [image, setImage] = useState("");
   const [summary, setSummary] = useState("");
-  const [project1, setproject1] = useState("");
-  const [project2, setproject2] = useState("");
-  const [project3, setproject3] = useState("");
-  const [project4, setproject4] = useState("");
-  const [project5, setproject5] = useState("");
-
   const [videoFile, setvideoFile] = useState("");
   const [currentposition, setCurrentPosition] = useState("");
   const [currentemployer, setCurrentEmployer] = useState("");
@@ -115,11 +109,7 @@ function Profile(props) {
         setLastName(response.data.lastname);
         setSummary(response.data.summary);
         setImage(response.data.imageFile);
-        setproject1(response.data.project1);
-        setproject2(response.data.project2);
-        setproject3(response.data.project3);
-        setproject4(response.data.project4);
-        setproject5(response.data.project5);
+
 
         setvideoFile(response.data.videoFile);
 
@@ -142,7 +132,7 @@ function Profile(props) {
   
 
     
-    ///////////////////////  DEGREE / CERTIFICACTION 1  //////////////////////////////////////////
+    ///////////////////////  DEGREE / CERTIFICATION 1  //////////////////////////////////////////
     const [cert1, setCert1] = useState("");
     const [degree1, setDegree1] = useState("");
     const [link1, setLink1] = useState("");
@@ -190,54 +180,75 @@ function Profile(props) {
 
 
   // Set up state to handle modal visibility
-const [isModalOpen, setIsModalOpen] = useState(false);
-const [isModalOpen1, setIsModalOpen1] = useState(false);
-const [isModalOpen2, setIsModalOpen2] = useState(false);
-const [isModalOpen3, setIsModalOpen3] = useState(false);
+
+
+////////////////////////// THUMBNAILS - OPEN & CLOSE MODALS ///////////////////////
+
+
+/////////THIS VARIABLE APPLIES TO EACH MODAL////////////////
 const [selectedImage, setSelectedImage] = useState('');
 
-// Function to handle opening the modal and setting the selected image
-const openModal = (image) => {
-  setSelectedImage(image);
-  setIsModalOpen(true);
-};
-
-// Function to handle closing the modal
-const closeModal = () => {
-  setIsModalOpen(false);
-};
 
 
   // Function to handle opening the modal and setting the selected image
+  const [isModalOpen1, setIsModalOpen1] = useState(false);
   const openModal1 = (image) => {
     setSelectedImage(image);
     setIsModalOpen1(true);
   };
+
+    // Function to handle closing the modal
+    const [isModalOpen2, setIsModalOpen2] = useState(false);
+    const closeModal1 = () => {
+      setIsModalOpen1(false);
+    };
+
+    
 
   const openModal2 = (image) => {
     setSelectedImage(image);
     setIsModalOpen2(true);
   };
   
-  // Function to handle closing the modal
-  const closeModal1 = () => {
-    setIsModalOpen1(false);
-  };
-
   const closeModal2 = () => {
     setIsModalOpen2(false);
   };
 
-    // Function to handle opening the modal and setting the selected image
-    const openModal3 = (image) => {
-      setSelectedImage(image);
-      setIsModalOpen3(true);
-    };
-    
-    // Function to handle closing the modal
-    const closeModal3 = () => {
-      setIsModalOpen3(false);
-    };
+//////////PROJECT 1 THUMBNAIL///////////////
+const [isModalOpenA, setIsModalOpenA] = useState(false);
+const openModalA = (image) => {
+  setSelectedImage(image);
+  setIsModalOpenA(true);
+};
+//Function to handle closing the modal
+const closeModalA = () => {
+  setIsModalOpenA(false);
+};
+
+//////////PROJECT 2 THUMBNAIL///////////////
+const [isModalOpenB, setIsModalOpenB] = useState(false);
+const openModalB = (image) => {
+  setSelectedImage(image);
+  setIsModalOpenB(true);
+};
+//Function to handle closing the modal
+const closeModalB = () => {
+  setIsModalOpenB(false);
+};
+
+//////////PROJECT 3 THUMBNAIL///////////////
+const [isModalOpenC, setIsModalOpenC] = useState(false);
+const openModalC = (image) => {
+  setSelectedImage(image);
+  setIsModalOpenC(true);
+};
+//Function to handle closing the modal
+const closeModalC = () => {
+  setIsModalOpenC(false);
+};
+
+
+
 
 
 /////////////////////////    SKILLS .GET REQUEST  ///////////////////////////
@@ -480,58 +491,6 @@ useEffect(() => {
  //////////////////////////////////Project 2///////////////////////////////// 
 
  
- const [project3title, setTitle_project3] = useState("");
- const [project3gitlink, setGitlink_project3] = useState("");
- const [project3demolink, setDemolink_project3] = useState("");
- const [project3description, setDescription_project3] = useState("");
- const [project3thumbnail, setThumbnail_project3] = useState("");
- const [selectedValuesSkills3, setSelectedValuesSkills3] = useState({ skills: [] });
- 
- useEffect(() => {
-  const token = sessionStorage.getItem("token");
-  const userId = sessionStorage.getItem("userId");
-
-  Axios.get(`http://localhost:3009/project3API/${userId}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-  .then((response) => {
-    console.log(response.data);
-    setTitle_project3(response.data.project3title);
-    setGitlink_project3(response.data.project3gitlink);
-    setDemolink_project3(response.data.project3demolink);
-    setDescription_project3(response.data.project3description);
-    setThumbnail_project3(response.data.project3thumbnail);
-  })
-// these white variables are wahts connected to the backend, so should be the same name as the table column names.
-  .catch((error) => {
-    console.log(error);
-  });
-}, []);
-
-useEffect(() => {
-  const token = sessionStorage.getItem("token");
-  const userId = sessionStorage.getItem("userId");
-
-  Axios.get(`http://localhost:3009/project3skills/${userId}`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-    .then((response) => {
-      const skillsData = response.data;
-      setSelectedValuesSkills3((prevselectedValuesSkills3) => ({
-        ...prevselectedValuesSkills3,
-        skills: skillsData,
-      }));
-    })
-    .catch((error) => {
-      console.log(error);
-    });
-}, []);
-
-
-
- //////////////////////////////////Project 2///////////////////////////////// 
-
- 
  const [project2title, setTitle_project2] = useState("");
  const [project2gitlink, setGitlink_project2] = useState("");
  const [project2demolink, setDemolink_project2] = useState("");
@@ -543,7 +502,7 @@ useEffect(() => {
   const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
 
-  Axios.get(`http://localhost:3009/project2API/${userId}`, {
+  Axios.get(`http://localhost:3009/publicproject2API/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   })
   .then((response) => {
@@ -564,7 +523,7 @@ useEffect(() => {
   const token = sessionStorage.getItem("token");
   const userId = sessionStorage.getItem("userId");
 
-  Axios.get(`http://localhost:3009/project2skills/${userId}`, {
+  Axios.get(`http://localhost:3009/publicproject2skills/${userId}`, {
     headers: { Authorization: `Bearer ${token}` },
   })
     .then((response) => {
@@ -578,6 +537,58 @@ useEffect(() => {
       console.log(error);
     });
 }, []);
+
+
+ //////////////////////////////////Project 3///////////////////////////////// 
+
+ 
+ const [project3title, setTitle_project3] = useState("");
+ const [project3gitlink, setGitlink_project3] = useState("");
+ const [project3demolink, setDemolink_project3] = useState("");
+ const [project3description, setDescription_project3] = useState("");
+ const [project3thumbnail, setThumbnail_project3] = useState("");
+ const [selectedValuesSkills3, setSelectedValuesSkills3] = useState({ skills: [] });
+ 
+ useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/publicproject3API/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  .then((response) => {
+    console.log(response.data);
+    setTitle_project3(response.data.project3title);
+    setGitlink_project3(response.data.project3gitlink);
+    setDemolink_project3(response.data.project3demolink);
+    setDescription_project3(response.data.project3description);
+    setThumbnail_project3(response.data.project3thumbnail);
+  })
+// these white variables are wahts connected to the backend, so should be the same name as the table column names.
+  .catch((error) => {
+    console.log(error);
+  });
+}, []);
+
+useEffect(() => {
+  const token = sessionStorage.getItem("token");
+  const userId = sessionStorage.getItem("userId");
+
+  Axios.get(`http://localhost:3009/publicproject3skills/${userId}`, {
+    headers: { Authorization: `Bearer ${token}` },
+  })
+    .then((response) => {
+      const skillsData = response.data;
+      setSelectedValuesSkills3((prevselectedValuesSkills3) => ({
+        ...prevselectedValuesSkills3,
+        skills: skillsData,
+      }));
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}, []);
+
 
 
 
@@ -900,7 +911,7 @@ useEffect(() => {
     alt="Project1"
     className="mt-1 mb-1 img-thumbnail"
     style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal(project1thumbnail)}
+    onClick={() => openModalA(project1thumbnail)}
   />
 </MDBCol>
 </div>
@@ -1002,7 +1013,7 @@ useEffect(() => {
 
 </div>
 
-<MDBModal tabIndex="-1" show={isModalOpen} onHide={closeModal}>
+<MDBModal tabIndex="-1" show={isModalOpenA} onHide={closeModalA}>
   <MDBModalDialog className="modal-dialog-centered">
     <MDBModalContent>
       <MDBModalHeader>
@@ -1042,7 +1053,7 @@ useEffect(() => {
 </div>
 
         </MDBModalTitle>
-        <button type="button" className="btn-close" onClick={closeModal}></button>
+        <button type="button" className="btn-close" onClick={closeModalA}></button>
       </MDBModalHeader>
       <MDBModalBody>
         <img
@@ -1072,7 +1083,7 @@ useEffect(() => {
     alt="Project2"
     className="mt-1 mb-1 img-thumbnail"
     style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal(project2thumbnail)}
+    onClick={() => openModalB(project2thumbnail)}
   />
 </MDBCol>
 </div>
@@ -1174,7 +1185,7 @@ useEffect(() => {
 
 </div>
 
-<MDBModal tabIndex="-1" show={isModalOpen} onHide={closeModal}>
+<MDBModal tabIndex="-1" show={isModalOpenB} onHide={closeModalB}>
   <MDBModalDialog className="modal-dialog-centered">
     <MDBModalContent>
       <MDBModalHeader>
@@ -1214,7 +1225,7 @@ useEffect(() => {
 </div>
 
         </MDBModalTitle>
-        <button type="button" className="btn-close" onClick={closeModal}></button>
+        <button type="button" className="btn-close" onClick={closeModalB}></button>
       </MDBModalHeader>
       <MDBModalBody>
         <img
@@ -1244,7 +1255,7 @@ useEffect(() => {
     alt="Project3"
     className="mt-1 mb-1 img-thumbnail"
     style={{ width: '300px', zIndex: '1', cursor: 'pointer' }}
-    onClick={() => openModal(project3thumbnail)}
+    onClick={() => openModalC(project3thumbnail)}
   />
 </MDBCol>
 </div>
@@ -1346,7 +1357,7 @@ useEffect(() => {
 
 </div>
 
-<MDBModal tabIndex="-1" show={isModalOpen} onHide={closeModal}>
+<MDBModal tabIndex="-1" show={isModalOpenC} onHide={closeModalC}>
   <MDBModalDialog className="modal-dialog-centered">
     <MDBModalContent>
       <MDBModalHeader>
@@ -1386,7 +1397,7 @@ useEffect(() => {
 </div>
 
         </MDBModalTitle>
-        <button type="button" className="btn-close" onClick={closeModal}></button>
+        <button type="button" className="btn-close" onClick={closeModalC}></button>
       </MDBModalHeader>
       <MDBModalBody>
         <img

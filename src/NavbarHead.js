@@ -52,6 +52,8 @@ function NavbarHead() {
    Tech Developer Network
    <br></br>
    Tech Developer Connect
+   <br></br>
+   Codopp
       </Navbar.Brand>
     </div> 
 

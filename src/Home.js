@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Card } from 'react-bootstrap';
 import "./Home.css";
 import { Carousel } from 'react-bootstrap';
+import { Link } from "react-router-dom";
 
 
 
@@ -119,6 +120,7 @@ function Home() {
   )
   .slice(0, visibleCards)
   .map((card, index) =>  (
+    
           <div className= "col-sm-6 col-md-4 col-lg-3 my-2 card-no-radius"
           key={card.id}
           onMouseEnter={() => setHoveredCard(index)}
@@ -128,7 +130,7 @@ function Home() {
 
 
 
-
+<Link to={`/PublicProfile/${card.id}`} key={card.id}>
 <div className={`card ${hoveredCard === index ? 'd-none' : ''}`}>
   <div
     className="card border"
@@ -263,85 +265,15 @@ function Home() {
     }}
   ></video>
 </div>
-               {/* <Carousel style={{ marginBottom: '20px'  }}>
-
-               <Carousel.Item>
-           <div style={{marginBottom: '40px', marginTop: '27px', lineHeight: '2', background: 'none', height: 'auto', fontWeight: 'bold'  }}>{card.firstname} {card.lastname}<br></br>
-           {card.city}, Country {card.country}
-           <br></br>
-           {card.title} at Current Company {card.currentCompany}
-          </div>      
-            </Carousel.Item>
-
-            <Carousel.Item>
-            <a href={`${card.project1link}`} target="_blank" rel="noopener noreferrer">
-              <img
-                 className="d-block mx-auto"
-                src={`http://localhost:3009/${card.project1}`}
-                alt="Project 1"
-                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
-              /> </a>
-            </Carousel.Item>
-
-            <Carousel.Item>
-            <a href={`${card.project2link}`} target="_blank" rel="noopener noreferrer">
-              <img
-                 className="d-block mx-auto"
-                src={`http://localhost:3009/${card.project2}`}
-                alt="Project 2"
-                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
-              /> </a>
-            </Carousel.Item>
-
-            <Carousel.Item>
-            <a href={`${card.project3link}`} target="_blank" rel="noopener noreferrer">
-              <img
-                 className="d-block mx-auto"
-                src={`http://localhost:3009/${card.project3}`}
-                alt="Project 3"
-                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
-              /> </a>
-            </Carousel.Item>
-
-            <Carousel.Item>
-            <a href={`${card.project4link}`} target="_blank" rel="noopener noreferrer">
-              <img
-                 className="d-block mx-auto"
-                src={`http://localhost:3009/${card.project4}`}
-                alt="Project 4"
-                style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
-              /> </a>
-            </Carousel.Item>
-
-            
-            <Carousel.Item>
-            <a href={`${card.project5link}`} target="_blank" rel="noopener noreferrer"
-              style={{ textDecoration: 'none' }} 
-              >
-                  <img
-                    className="d-block mx-auto"
-                    src={`http://localhost:3009/${card.project5}`}
-                    alt="Project 5"
-                    style={{ maxWidth: '180px', height: 'auto', marginBottom: '40px' }}
-                  /> </a>
-
-            </Carousel.Item>
-          </Carousel>             */}
-           </div>
-            
-           {/* <div style={{ flex: 1 }}>
-            <Card.Title style={{ lineHeight: '1.5', background: 'black' }}>{card.firstname} {card.lastname}</Card.Title>
-          </div>       */}
-
-            </div>
-
-
-      </div>
+ </div>
+</div>
+ </div>
     )}
 
 
-
+</Link>
           </div>
+         
         ))}
       </div>
 

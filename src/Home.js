@@ -33,12 +33,6 @@ function Home() {
       .catch(error => console.error(error));
   }, []);
 
-
-
-
-
-
-
  
   useEffect(() => {
     function handleScroll() {
@@ -49,10 +43,6 @@ function Home() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [visibleCards]);
-
-
-
-
 
 
   function handleSearch(event) {
